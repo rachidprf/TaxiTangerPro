@@ -430,7 +430,21 @@ footer {
       <label class="required"><input type="text" name="identifiant_enqueteur" required ></label>
       
       <div class="section-header">المدينة / الجماعة</div>
-      <label class="required"><input type="text" name="ville" value="Tanger" ></label>
+      
+	  
+	  
+	  <label class="required">
+        <select name="ville" required >
+          <option value="">اختار...</option>
+          <option value="RABAT">RABAT</option>
+          <option value="SALE">SALE</option>
+		  <option value="TEMARA">TEMARA</option>
+          
+
+
+        </select>
+      </label>
+	  
       
       <div class="section-header">بلاصة اللقاء</div>
      
@@ -438,10 +452,12 @@ footer {
       <label class="required">
         <select name="lieu_entretien" required >
           <option value="">اختار...</option>
-          <option value="pointage 1">pointage 1 - PLACE HASSAN</option>
-          <option value="pointage 2">pointage 2 - HAY SINAII</option>
-		  <option value="pointage 3">pointage 3 - AL FADILA</option>
-		  <option value="pointage 4">pointage 4 - CHBANATE</option>
+          <option value="PLACE HASSAN">pointage 1 - PLACE HASSAN</option>
+          <option value="HAY SINAII">pointage 2 - HAY SINAII</option>
+		  <option value="AL FADILA">pointage 3 - AL FADILA</option>
+		  <option value="CHBANATE">pointage 4 - CHBANATE</option>
+		  <option value="SALE">pointage 5 - SALE</option>
+		  <option value="TEMARA">pointage 6 - TEMARA</option>
           
 
 
