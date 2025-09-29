@@ -807,7 +807,7 @@ footer {
         <div class="checkbox-group">
           <label class="checkbox-option"><input type="checkbox" name="service_mode" value="جماعي خط ثابت"> جماعي - خط ثابت</label>
           <label class="checkbox-option"><input type="checkbox" name="service_mode" value="جماعي حسب الطلب"> جماعي - حسب الطلب</label>
-          <label class="checkbox-option"><input type="checkbox" name="service_mode" value="الكورصا"> بالكورصا (واحد فكل مرة)</label>
+          <label class="checkbox-option"><input type="checkbox" name="service_mode" value="الكورصا"> بالكورصا (وما كنشد حتى واحد فالطريق )</label>
         </div>
       </label>
 
@@ -1356,7 +1356,7 @@ document.getElementById('taxiForm').addEventListener('submit', function(e){
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'جارٍ الإرسال...';
-  setTimeout(()=>{ btn.disabled=false; btn.textContent='صيفط الاستمارة'; }, 5000);
+  setTimeout(()=>{ btn.disabled=false; btn.textContent='صيفط الاستمارة'; }, 55000);
   
 });
   const form = document.getElementById('taxiForm');
@@ -1376,7 +1376,7 @@ document.getElementById('taxiForm').addEventListener('submit', function(e){
       if (data.result === "success") {
         alert(data.message);   // ✅ affiche l’alerte
         form.reset();          // ✅ vide le formulaire
-		window.location.href = "https://rachidprf.github.io/TaxiMaroc/"
+		window.location.href = "https://rachidprf.github.io/TaxiTangerPro/"
       } else {
         alert("Erreur : " + data.error);
       }
