@@ -533,7 +533,7 @@ footer {
           <label class="checkbox-option"><input type="checkbox" name="langues" value="الإسبانية"> الإسبانية</label>
           <label class="checkbox-option"><input type="checkbox" name="langues" value="الإيطالية"> الإيطالية</label>
           <label class="checkbox-option"><input type="checkbox" name="langues" value="الألمانية"> الألمانية</label>
-          <label class="checkbox-option"><input type="text" name="langue_autre" placeholder="أخرى..."></label>
+          <label class="checkbox-option"><input type="text" name="langue_autre" placeholder="لغات أجنبية أخرى..."></label>
         </div>
       </label>
 
@@ -555,7 +555,7 @@ footer {
             <label class="radio-option"><input type="radio" name="contrat_licence" value="لا"> لا</label>
           </div>
         </label>
-
+		
         <div id="bloc_type_contrat" style="display:none">
           <div class="section-header">نوع العقد</div>
           <label>
@@ -564,8 +564,12 @@ footer {
               <label class="radio-option"><input type="radio" name="type_contrat" value="كراء"> كراء</label>
               <label class="radio-option"><input type="radio" name="type_contrat" value="أخرى"> أخرى</label>
               <input type="text" name="type_contrat_autre" placeholder="حدد...">
+			  
+			  
             </div>
           </label>
+		  <div class="section-header">مدة العقد</div>
+		  <label><input type="text" name="duree" placeholder="مدة العقد"></label>
         </div>
       </div>
 
@@ -696,30 +700,45 @@ footer {
     <fieldset id="section2" style="display:none">
       <legend>2) تنظيم المهنة والخدمة فالمحطة</legend>
       <p class="small">جاوب على المحطة الرئيسية إذا كتخدم فعدة محطات.</p>
+	  
+	  
+<div id="staionfreqente">
+        <div class="section-header">	كتخدم فشي محطة غالبا ولالا </div>
+        <label class="required">
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="staionfreqente" value="نعم"> نعم</label>
+            <label class="radio-option"><input type="radio" name="staionfreqente" value="لا"> لا</label>
+          </div>
+        </label>
+	  
+	  
+	  
+	  
+	  <div id="blocstrfreq" style="display:none">
 
       <div class="section-header">	واش البلايص فين تسطاسيوني فالمحطة كافيين </div>
-      <label class="required">
+      
         <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="station_suffisante" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="station_suffisante" value="لا" required > لا</label>
+          <label class="radio-option"><input type="radio" name="station_suffisante" value="نعم"  > نعم</label>
+          <label class="radio-option"><input type="radio" name="station_suffisante" value="لا"  > لا</label>
         </div>
-      </label>
+      
 
       <div class="section-header">	واش كاين مسؤول أو رئيس معروف فالمحطة؟ </div>
-      <label class="required">
+      
         <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="responsable_station" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="responsable_station" value="لا" required > لا</label>
+          <label class="radio-option"><input type="radio" name="responsable_station" value="نعم"  > نعم</label>
+          <label class="radio-option"><input type="radio" name="responsable_station" value="لا"  > لا</label>
         </div>
-      </label>
+     
 
          <div class="section-header">	واش كاينين قوانين ديال الأسبقية أولا التناوب؟ ؟</div>
-      <label class="required">
+     
         <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="regles_priorite" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="regles_priorite" value="لا" required > لا</label>
+          <label class="radio-option"><input type="radio" name="regles_priorite" value="نعم"  > نعم</label>
+          <label class="radio-option"><input type="radio" name="regles_priorite" value="لا"  > لا</label>
         </div>
-      </label>
+      
       <div id="respect_regles_label" style="display:none">
         <div class="section-header">إلا كانت، واش كايحتارموها الشيافر</div>
         <label>
@@ -733,12 +752,12 @@ footer {
       </div>
 
       <div class="section-header">	واش النظام ديال المحطة‍ كيتراقب من شي سلطة؟ </div>
-      <label class="required">
+      
         <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="pointage_controle" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="pointage_controle" value="لا" required > لا</label>
+          <label class="radio-option"><input type="radio" name="pointage_controle" value="نعم"  > نعم</label>
+          <label class="radio-option"><input type="radio" name="pointage_controle" value="لا"  > لا</label>
         </div>
-      </label>
+      
 
       <div id="bloc_controle" style="display:none">
         <div class="section-header">شكون كيراقب؟</div>
@@ -754,8 +773,8 @@ footer {
         
       </div>
 
-      <hr>
-
+      </div>
+</div>
 
 <div class="section-header">خاضعين لنظام البوانطاج؟</div>
         <label>
@@ -796,8 +815,10 @@ footer {
         <div class="section-header">كيفاش كيتم تقاسم الخلاص؟</div>
         <label>
           <div class="radio-group">
+		    <label class="radio-option"><input type="radio" name="partage_paiement" value="الكونتور"> على حسب الكونتور لكل كليان طلع</label>
             <label class="radio-option"><input type="radio" name="partage_paiement" value="على حسب المسافة"> على حسب المسافة</label>
-            <label class="radio-option"><input type="radio" name="partage_paiement" value="بالتساوي"> بالتساوي</label>
+            <label class="radio-option"><input type="radio" name="partage_paiement" value="بالتساوي"> ثمن الرحلة معروف بالتساوي للركاب</label>
+			<label class="radio-option"><input type="radio" name="partage_paiement" value="كتقسم"> ثمن الرحلة كتقسم على الركاب</label>
             <label class="radio-option"><input type="radio" name="partage_paiement" value="أخرى"> أخرى</label>
             <input type="text" name="partage_paiement_autre" placeholder="وضح...">
             </div>
@@ -817,6 +838,18 @@ footer {
 
       <!-- bloc ligne -->
       <div id="bloc_ligne" style="display:none">
+	  
+	  
+        <div class="section-header">واش الخط عندك قار ولا كتغيرو</div>
+        <label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="statutligne" value="قار "> قار</label>
+            <label class="radio-option"><input type="radio" name="statutligne" value="كيتغير"> كيتغير</label>
+            
+          </div>
+        </label>
+
+	  
         <div class="section-header">على أي أساس كتختار الخط؟</div>
         <label>
           <div class="radio-group">
@@ -859,7 +892,7 @@ footer {
             <label class="radio-option"><input type="radio" name="zones_preferees" value="لا"> لا</label>
           </div>
         </label>
-
+<div id="bloc_zonepref" style="display:none">
         <div class="section-header">شكون كيتختار هاد المناطق؟</div>
         <label>
           <div class="radio-group">
@@ -868,7 +901,7 @@ footer {
             <label class="radio-option"><input type="radio" name="choix_zones" value="مول لكريمة"> مول الكريما</label>
           </div>
         </label>
-
+</div>
         <div class="section-header">كيفاش كيتحدد الاختيار؟</div>
         <label>
           <div class="checkbox-group">
@@ -892,7 +925,7 @@ footer {
 
       <hr>
 
-      <div class="section-header">واش كاينين مشاكل فالمحطة؟</div>
+      <div class="section-header">واش كاينين مشاكل فالمحطة ولا البلاصة لكتهز منها الناس؟</div>
       <label class="required">
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="conflits_station" value="نعم" required > نعم</label>
@@ -1045,7 +1078,7 @@ footer {
     <fieldset id="section5" style="display:none">
       <legend>3) الجوانب الاقتصادية ومصاريف الخدمة</legend>
 
-      <div class="section-header">طريقة الخلاص</div>
+      <div class="section-header">طريقة الخلاص ديالك أنت واش </div>
       <label class="required">
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="modalite_retribution" value="يومية ثابتة" required > يومية ثابتة</label>
@@ -1261,6 +1294,10 @@ document.querySelectorAll('input[name="detenteur_agrement"]').forEach(r=>{
   r.addEventListener('change', e => toggle('bloc_contrat', e.target.value === 'لا'));
 });
 
+document.querySelectorAll('input[name="pointage_controle"]').forEach(r=>{
+  r.addEventListener('change', e => toggle('bloc_controle', e.target.value === 'نعم'));
+});
+
 document.querySelectorAll('input[name="contrat_licence"]').forEach(r=>{
   r.addEventListener('change', e => toggle('bloc_type_contrat', e.target.value === 'نعم'));
 });
@@ -1280,6 +1317,14 @@ document.querySelectorAll('input[name="pointage_controle"]').forEach(r=>{
 document.querySelectorAll('input[name="pointage_systeme"]').forEach(r=>{
   r.addEventListener('change', e => toggle('bloc_pointage', e.target.value === 'نعم'));
 });
+
+document.querySelectorAll('input[name="staionfreqente"]').forEach(r=>{
+  r.addEventListener('change', e => toggle('blocstrfreq', e.target.value === 'نعم'));
+});
+document.querySelectorAll('input[name="zones_preferees"]').forEach(r=>{
+  r.addEventListener('change', e => toggle('bloc_zonepref', e.target.value === 'نعم'));
+});
+
 
 function updateCollectif(){
   const checked = Array.from(document.querySelectorAll('input[name="service_mode"]')).some(c=>c.checked && c.value.includes('جماعي'));
