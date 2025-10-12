@@ -436,10 +436,8 @@ footer {
 	  <label class="required">
         <select name="ville" required >
           <option value="">اختار...</option>
-          <option value="RABAT">RABAT</option>
-          <option value="SALE">SALE</option>
-		  <option value="TEMARA">TEMARA</option>
-		  <option value="MARRAKECH">MARRAKECH</option>
+          <option value="CASABLANCA">CASABLANCA</option>
+          
           
 
 
@@ -453,10 +451,14 @@ footer {
       <label class="required">
         <select name="lieu_entretien" required >
           <option value="">اختار...</option>
-          <option value="CIMITIERE EUROPEEN">pointage 1 - CIMITIERE EUROPEEN MARRAKECH</option>
-          <option value="KBOUR CHOU">pointage 2 - KBOUR CHOU MARRAKECH</option>
-		  		  <option value="SALE">pointage 5 - SALE</option>
-		  <option value="TEMARA">pointage 6 - TEMARA</option>
+          <<option value="Ain Sbaa Hay Mohammadi">Ain Sbaa Hay Mohammadi</option>
+          <option value="Hay Hassani">Hay Hassani</option>
+		  <option value="Casa Anfa">Casa Anfa</option>
+		  <option value="Al Fida Derb Soltane">Al Fida Derb Soltane</option>
+		   <option value="Bernoussi">Bernoussi</option>
+		   		   <option value="Ain Chok">Ain Chok</option>
+		   <option value=" My Rchid Sidi Othmane"> My Rchid Sidi Othmane</option>
+
           
 
 
@@ -751,7 +753,7 @@ footer {
         </label>
       </div>
 
-      <div class="section-header">	واش النظام ديال المحطة‍ كيتراقب من شي سلطة؟ </div>
+      <div class="section-header">	واش النظام العام ككل ديال المحطة‍ والكورتي كيتراقب من شي سلطة؟</div>
       
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="pointage_controle" value="نعم"  > نعم</label>
@@ -761,7 +763,17 @@ footer {
 
       <div id="bloc_controle" style="display:none">
         <div class="section-header">شكون كيراقب؟</div>
-        <label><input type="text" name="autorite_controle" placeholder="الجهة/السلطة"></label>
+        <label>
+		
+		<div class="checkbox-group">
+          <label class="checkbox-option"><input type="checkbox" name="autorite_controle" value="السلطات المحلية"> السلطات المحلية</label>
+          <label class="checkbox-option"><input type="checkbox" name="autorite_controle" value="نقابة/جمعية"> نقابة/جمعية</label>
+          <label class="checkbox-option"><input type="checkbox" name="autorite_controle" value="بوليس"> بوليس</label>
+          <label class="checkbox-option"><input type="text" name="autorite_controle_autre" placeholder="أخرى ... حدد الجهة"></label>
+        </div>
+		</label>
+		
+		
         
         <div class="section-header">واش المراقبة فعالة؟</div>
         <label>
@@ -1098,11 +1110,42 @@ footer {
 	  <div class="section-header">نسبة من المداخيل</div>
 		  <label><input type="number" name="POURCENTAGE" placeholder="النسبة"></label>
 
+
+
       <div class="section-header">المصاريف اليومية</div>
       <div class="inline">
         <label class="required">الكازوال (درهم/اليوم)<input type="number" name="depense_carburant" min="0" required ></label>
         <label>كراء الطاكسي الروسيتة (درهم/اليوم)<input type="number" name="depense_location" min="0"></label>
+		
+		
+		
+		
+		
+		
+		
+		<label>واش الروسيتة كتغير في اشهر الذروة (درهم/اليوم)<div class="radio-group">
+          <label class="radio-option"><input type="radio" name="recette_fixe"  value="نعم" > نعم</label>
+          <label class="radio-option"><input type="radio" name="recette_fixe" value="لا"  > لا</label>
+         
+        </div></label>
+		
+		
+		<div id="recette_var" style="display:none">
+        <div class="section-header"> ثمن ومدة الروسيتة في اشهر الذروة	</div>
+        <label>
+          
+            <label> إلا كتغيرشحال كتخلص بحال دابا <input type="number" name="recettesaisoniarevariable" ></label>
+            <label> شحال كتبقى مغيرة المدة باليوم <input type="number" name="recettesaisoniareduree" > </label>
+          </div>
+        </label>
       </div>
+
+
+
+
+
+
+
 
       <div class="section-header">المصاريف الدورية</div>
       <div class="inline">
@@ -1344,6 +1387,12 @@ document.querySelectorAll('input[name="staionfreqente"]').forEach(r=>{
 });
 document.querySelectorAll('input[name="zones_preferees"]').forEach(r=>{
   r.addEventListener('change', e => toggle('bloc_zonepref', e.target.value === 'نعم'));
+});
+
+
+
+document.querySelectorAll('input[name="recette_fixe"]').forEach(r=>{
+  r.addEventListener('change', e => toggle('recette_var', e.target.value === 'نعم'));
 });
 
 
