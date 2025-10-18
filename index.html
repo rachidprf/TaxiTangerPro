@@ -1,1480 +1,1052 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-<title>استمارة لمهنيين ديال الطاكسيات</title>
-<link rel="icon" type="image/png" href="1.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --primary: #2c3e50;
-  --secondary: #e74c3c;
-  --accent: #f39c12;
-  --light: #ecf0f1;
-  --dark: #2c3e50;
-  --success: #27ae60;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Noto Naskh Arabic', serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #333;
-  direction: rtl;
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
-}
-
-.header-image {
-  text-align: center;
-  padding: 15px;
-  background: var(--dark);
-}
-
-.header-image img {
-  max-width: 100%;
-  height: auto;
-  max-height: 150px;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.welcome-text {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  text-align: center;
-  font-size: 1.1rem;
-  border-right: 4px solid var(--secondary);
-}
-
-.progress-container {
-  width: 100%;
-  background: #ddd;
-  border-radius: 20px;
-  height: 15px;
-  overflow: hidden;
-  margin: 20px 0;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--secondary), var(--accent));
-  width: 0;
-  transition: width 0.5s ease;
-  border-radius: 20px;
-}
-
-form {
-  margin-top: 20px;
-}
-
-fieldset {
-  background: white;
-  border: none;
-  border-radius: 15px;
-  padding: 25px;
-  margin: 25px 0;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-fieldset::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 5px;
-  height: 100%;
-  background: var(--secondary);
-}
-
-legend {
-  font-weight: 700;
-  color: var(--dark);
-  padding: 0 15px;
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  background: var(--light);
-  border-radius: 30px;
-  padding: 10px 20px;
-  display: inline-block;
-}
-
-label {
-  display: block;
-  margin: 15px 0 8px;
-  font-size: 1rem;
-  color: #444;
-  font-weight: 500;
-}
-
-input[type="text"], 
-input[type="number"], 
-input[type="date"], 
-input[type="time"], 
-select, 
-textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 8px;
-  border: 2px solid #ddd;
-  font-size: 1rem;
-  background: #f9f9f9;
-  transition: all 0.3s ease;
-}
-
-input[type="text"]:focus, 
-input[type="number"]:focus, 
-input[type="date"]:focus, 
-input[type="time"]:focus, 
-select:focus, 
-textarea:focus {
-  border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
-  outline: none;
-  background: white;
-}
-
-textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.radio-group, 
-.checkbox-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.radio-option, 
-.checkbox-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.radio-option:hover, 
-.checkbox-option:hover {
-  background: #e9e9e9;
-  transform: translateY(-2px);
-}
-
-.inline {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.inline required > * {
-  flex: 1;
-  min-width: 200px;
-}
-
-.small {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 5px;
-  font-style: italic;
-}
-
-.badge {
-  display: inline-block;
-  background: var(--accent);
-  color: white;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  margin-inline-start: 10px;
-  font-weight: bold;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 15px;
-  margin: 25px 0;
-  justify-content: center;
-}
-
-.nav-buttons button {
-  flex: 1;
-  max-width: 200px;
-  padding: 16px;
-  border-radius: 50px;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.btn-primary {
-  background: linear-gradient(45deg, var(--secondary), var(--accent));
-  color: white;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.btn-secondary {
-  background: white;
-  border: 2px solid var(--dark);
-  color: var(--dark);
-}
-
-.btn-secondary:hover {
-  background: var(--dark);
-  color: white;
-}
-
-.btn-disabled {
-  background: #bdc3c7;
-  color: #7f8c8d;
-  cursor: not-allowed;
-}
-
-.required::after {
-  content: " *";
-  color: var(--secondary);
-  font-weight: bold;
-}
-
-.error {
-  border-color: var(--secondary) !important;
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2) !important;
-}
-
-footer {
-  margin: 30px 0;
-  text-align: center;
-  color: #7f8c8d;
-  font-size: 0.9rem;
-  padding: 20px;
-  border-top: 1px solid #ddd;
-}
-
-.section-header {
-  background: var(--secondary);
-  color: white;
-  padding: 12px;
-  text-align: center;
-  border-radius: 5px;
-  margin: 15px 0;
-  font-weight: bold;
-}
-
-/* Styles pour le message de confirmation */
-.success-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-.success-content {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  text-align: center;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: modalFadeIn 0.5s;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(-50px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.success-icon {
-  font-size: 60px;
-  color: var(--success);
-  margin-bottom: 20px;
-}
-
-.success-title {
-  font-size: 24px;
-  color: var(--dark);
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-
-.success-message {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 25px;
-  line-height: 1.5;
-}
-
-.success-button {
-  background: var(--success);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.success-button:hover {
-  background: #219653;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(33, 150, 83, 0.3);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-  
-  .inline {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .inline required > * {
-    min-width: 100%;
-  }
-  
-  .radio-group, 
-  .checkbox-group {
-    grid-template-columns: 1fr;
-  }
-  
-  .nav-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .nav-buttons button {
-    max-width: 100%;
-  }
-  
-  fieldset {
-    padding: 20px 15px;
-  }
-  
-  .header-image img {
-    max-height: 120px;
-  }
-  
-  .success-content {
-    padding: 25px;
-  }
-  
-  .success-title {
-    font-size: 20px;
-  }
-  
-  .success-message {
-    font-size: 16px;
-  }
-}
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>استمارة خاصة بمستعملي الطاكسيات</title>
+    <style>
+        * { box-sizing: border-box; margin:0; padding:0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .progress-container { margin:20px 0; background:#e0e0e0; border-radius:10px; height:20px; }
+        .progress-bar { height:100%; width:0%; background: linear-gradient(90deg,#3498db 0%,#2ecc71 100%); border-radius:10px; transition: width .5s; }
+        .section { background:#fff; padding:25px; margin-bottom:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.08); display:none; }
+        .section.active { display:block; animation: fadeIn .5s ease; }
+        @keyframes fadeIn { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+        h1 { color:white; margin-bottom:10px; font-size:28px; }
+        h2 { color:#3498db; border-bottom:2px solid #eee; padding-bottom:15px; margin-bottom:20px; font-size:24px; }
+        .question { margin-bottom:25px; padding:15px; background:#f9f9f9; border-radius:8px; border-left:4px solid #3498db; }
+        .options { margin-top:12px; display:flex; flex-wrap:wrap; gap:15px; }
+        label { display:flex; align-items:center; margin-bottom:10px; cursor:pointer; padding:8px 12px; background:#f0f4f8; border-radius:6px; transition:background-color .2s; }
+        label:hover { background:#e1e9f2; }
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], textarea, select {
+            width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; margin-top:8px; font-family:inherit; font-size:16px;
+        }
+        input[type="radio"], input[type="checkbox"] { margin-left:10px; transform:scale(1.15); }
+        .researcher-info { background:#e8f4fc; padding:20px; border-radius:10px; margin-bottom:30px; border:1px solid #b8d4ee; }
+        table { width:100%; border-collapse:collapse; margin:20px 0; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+        th, td { border:1px solid #ddd; padding:12px; text-align:center; }
+        th { background:#f2f7fb; font-weight:bold; }
+        tr:nth-child(even) { background:#f9f9f9; }
+        .navigation { display:flex; justify-content:space-between; margin-top:30px; }
+        button { padding:14px 28px; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; transition:all .3s ease; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+        .prev-btn { background:#95a5a6; color:white; } .prev-btn:hover { background:#7f8c8d; }
+        .next-btn { background:#3498db; color:white; } .next-btn:hover { background:#2980b9; }
+        .submit-btn { background:#2ecc71; color:white; } .submit-btn:hover { background:#27ae60; }
+        .section-indicator { text-align:center; margin-bottom:20px; font-weight:bold; color:#7f8c8d; font-size:18px; }
+        @media (max-width:768px) {
+            .options { flex-direction:column; gap:8px; }
+            table { font-size:14px; }
+            th, td { padding:8px; }
+            button { padding:12px 20px; font-size:14px; }
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+        <h1>استمارة خاصة بمستعملي الطاكسيات</h1>
+    </div>
 
-<div id="headerImage" class="header-image">
-  <img src="1.png" width="150%" alt="Banner">
-</div>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
 
-<div id="headerTXT" class="welcome-text">
-  السلام عليكم — شكراً لمشاركتك. الهدف من هاد الاستمارة هو جمع معلومات ميدانية على وضعيات مهنيي الطاكسيات.
-</div>
+    <div class="section-indicator">
+        <span id="current-section">1</span> / <span id="total-sections">5</span>
+    </div>
 
-  
-  <div class="progress-container">
-    <div id="progressBar" class="progress-bar"></div>
-  </div>
+    <form id="usertaxiform" novalidate>
+        <input name="form-name" type="hidden" value="usertaxiform"/>
 
-  <form id="taxiForm">
-    <input type="hidden" name="form-name" value="taxiForm">
-    <p style="display:none"><label>لا تملأ هذا الحقل: <input name="bot-field"></label></p>
+        <!-- Section 0 -->
+        <div class="section active" id="section0">
+            <h2>معلومات الباحث</h2>
 
-    <!-- SECTION 0: بيانات الباحث -->
-    <fieldset id="section0">
-      <legend>قسم الباحث</legend>
-      <div class="section-header">كود الباحث</div>
-      
-      <label class="required">
-        <select name="identifiant_enqueteur" required >
+            <div class="question">
+                <label>كود الباحث: <select name="code_chercheur" required >
           <option value="">اختار...</option>
           <option value="Amine bentachfine ">Amine bentachfine </option>
           <option value="FADEL">FADEL</option> 
 		  <option value="HASSAN FINANE">HASSAN FINANE</option>
 		  <option value="YOUSSEF FARES">YOUSSEF FARES</option>
-		   <option value="MUSTAPHA">MUSTAPHA</option>
-		   		   <option value="MOHAMMED KEBDANI">MOHAMMED KEBADI</option>
+		  <option value="MUSTAPHA">MUSTAPHA</option>
+		  <option value="MOHAMMED KEBDANI">MOHAMMED KEBADI</option>
 		
 
           
 
 
-        </select>
-      </label>
-	  
-	  
-	  
-      <div class="section-header">المدينة / الجماعة</div>
-      
-	  
-	  
-	  <label class="required">
-        <select name="ville" required >
-          <option value="">اختار...</option>
-          <option value="CASABLANCA">CASABLANCA</option>
-          
-          
-
-
-        </select>
-      </label>
-	  
-      
-      <div class="section-header">بلاصة اللقاء</div>
-     
-	  	  
-      <label class="required">
-        <select name="lieu_entretien" required >
-          <option value="">اختار...</option>
-          <<option value="Ain Sbaa Hay Mohammadi">Ain Sbaa Hay Mohammadi</option>
-          <option value="Hay Hassani">Hay Hassani</option>
-		  <option value="Casa Anfa">Casa Anfa</option>
-		  <option value="Al Fida Derb Soltane">Al Fida Derb Soltane</option>
-		   <option value="Bernoussi">Bernoussi</option>
-		   		   <option value="Ain Chok">Ain Chok</option>
-		   <option value=" My Rchid Sidi Othmane"> My Rchid Sidi Othmane</option>
-
-          
-
-
-        </select>
-      </label>
-	  
-	  
-	  
-       
-      <div class="section-header">التاريخ والوقت</div>
-      <div class="inline">
-        <label>التاريخ<input type="date" name="date_enquete" required></label>
-        <label>الوقت<input type="time" name="heure_enquete" required ></label>
-      </div>
-      <div class="small">رجاءً خُصص هاد الخانات باش نعرف مكان وزمان التحقيق.</div>
-    </fieldset>
-
-    <!-- SECTION 1: الملف الشخصي والحالة المهنية -->
-    <fieldset id="section1" style="display:none">
-      <legend>1) الملف الشخصي والحالة المهنية</legend>
-	  
-      <div class="section-header">نوع الطاكسي</div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="type_taxi" value="طاكسي صغير" required > طاكسي صغير</label>
-          <label class="radio-option"><input type="radio" name="type_taxi" value="طاكسي كبير" required > طاكسي كبير</label>
-        </div>
-      </label>
-
-      <div class="section-header">الفئة العمرية</div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="age" value="أقل من 30" required > أقل من 30 عام</label>
-          <label class="radio-option"><input type="radio" name="age" value="31-45" required > من 31 حتى 45 عام</label>
-          <label class="radio-option"><input type="radio" name="age" value="45-60" required > من 45 حتى 60 عام</label>
-          <label class="radio-option"><input type="radio" name="age" value="أكثر من 60" required > أكثر من 60 عام</label>
-        </div>
-      </label>
-
-      <div class="section-header"> واش عندك رخصة الثقة صالحة؟ </div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="permis_confiance" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="permis_confiance" value="لا" required > لا</label>
-        </div>
-      </label>
-
-      <div class="section-header">واش عندك كارط ديال السائق المهني صالحة؟ </div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="carte_conducteur" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="carte_conducteur" value="لا" required > لا</label>
-        </div>
-      </label>
-
-      <div class="section-header">المستوى الدراسي</div>
-      <label class="required">
-        <select name="niveau_instruction" required >
-          <option value="">اختار...</option>
-          <option value="ما قريتش">ما قريتش</option>
-          <option value="ابتدائي">ابتدائي</option>
-          <option value="إعدادي">إعدادي</option>
-          <option value="ثانوي">ثانوي</option>
-          <option value="تعليم عالي">تعليم عالي</option>
-        </select>
-      </label>
-
-      <div class="section-header">اللغات اللي كتعرف لها</div>
-      <label>
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="langues" value="الفرنسية"> الفرنسية</label>
-          <label class="checkbox-option"><input type="checkbox" name="langues" value="الإنجليزية"> الإنجليزية</label>
-          <label class="checkbox-option"><input type="checkbox" name="langues" value="الإسبانية"> الإسبانية</label>
-          <label class="checkbox-option"><input type="checkbox" name="langues" value="الإيطالية"> الإيطالية</label>
-          <label class="checkbox-option"><input type="checkbox" name="langues" value="الألمانية"> الألمانية</label>
-          <label class="checkbox-option"><input type="text" name="langue_autre" placeholder="لغات أجنبية أخرى..."></label>
-        </div>
-      </label>
-
-      <hr>
-
-      <div class="section-header">	واش انتَ مول لكريمة؟ </div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="detenteur_agrement" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="detenteur_agrement" value="لا" required > لا</label>
-        </div>
-      </label>
-
-      <div id="bloc_contrat" style="display:none">
-        <div class="section-header">	إلا كان لا ,واش عندك عقد استغلال مع مول لكريمة؟ </div>
-        <label class="required">
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="contrat_licence" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="contrat_licence" value="لا"> لا</label>
-          </div>
-        </label>
-		
-        <div id="bloc_type_contrat" style="display:none">
-          <div class="section-header">نوع العقد</div>
-          <label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="type_contrat" value="تفويض"> تفويض</label>
-              <label class="radio-option"><input type="radio" name="type_contrat" value="كراء"> كراء</label>
-              <label class="radio-option"><input type="radio" name="type_contrat" value="أخرى"> أخرى</label>
-              <input type="text" name="type_contrat_autre" placeholder="حدد...">
-			  
-			  
+        </select></label>
             </div>
-          </label>
-		  <div class="section-header">مدة العقد</div>
-		  <label><input type="number" name="duree" placeholder="مدة العقد"></label>
-        </div>
-      </div>
 
-            <div class="section-header">	واش انتَ مول الطاكسي؟ </div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="proprietaire_taxi" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="proprietaire_taxi" value="لا" required > لا</label>
-        </div>
-      </label>
-
-      <div class="section-header">إلا ماشي نتا مول الطاكسي , كتخدم كسائق طاكسي</div>
-      <label class="required">
-        <select name="statut_professionnel"  >
+            <div class="researcher-info">
+                <h3>قسم معبأ من طرف الباحث:</h3>
+                <div class="question">
+                    <label>المدينة/الجماعة:  <label class="required">
+        <select name="ville_commune" required >
           <option value="">اختار...</option>
-          <option value="حر">حر</option>
-          <option value="أجير">أجير</option>
-          <option value="أخرى">أخرى</option>
-        </select>
-      </label>
-
-      <div class="section-header">الأقدمية في الميدان</div>
-      <label class="required">
-        <select name="anciennete" required >
-          <option value="">اختار...</option>
-          <option value="أقل من عام">أقل من عام</option>
-          <option value="1-5">من 1 حتى 5 سنين</option>
-          <option value="5-10">من 5 حتى 10 سنين</option>
-          <option value="10-20">من 10 حتى 20 عام</option>
-          <option value="أكثر من 20">أكثر من 20 عام</option>
-        </select>
-      </label>
-
-      <div class="section-header">واش درتي تكوينات مهنية فالميدان ديال الطاكسيات</div>
-      <label class="required">
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="formations" value="تكوين أولي"> تكوين أولي</label>
-          <label class="checkbox-option"><input type="checkbox" name="formations" value="تكوين مستمر"> تكوين مستمر</label>
-          <label class="checkbox-option"><input type="checkbox" name="formations" value="ما درتش"> ما درتش</label>
-        </div>
-      </label>
-
-      <div class="section-header">مكان الخدمة</div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="lieu_activite" value="حضري" required > حضري</label>
-          <label class="radio-option"><input type="radio" name="lieu_activite" value="قروي" required > قروي</label>
-          <label class="radio-option"><input type="radio" name="lieu_activite" value="ما بين الجماعات" required > ما بين الجماعات</label>
-          <label class="radio-option"><input type="radio" name="lieu_activite" value="ما بين الأقاليم" required > ما بين الأقاليم</label>
-        </div>
-      </label>
-
-      <div class="section-header">التغطية الصحية والتقاعد</div>
-      <div class="inline">
-        <label class="required">تغطية صحية (AMO)
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="couverture_medicale" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="couverture_medicale" value="لا" required > لا</label>
-          </div>
-        </label>
-
-        <label class="required">مسجل في نظام التقاعد
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="regime_pension" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="regime_pension" value="لا" required > لا</label>
-          </div>
-        </label>
-
-        <label class="required">كتستافد من التقاعد
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="retraite" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="retraite" value="لا" required > لا</label>
-          </div>
-        </label>
-      </div>
-
-      <div class="section-header">الدوريات وعدد السائقين</div>
-      <div class="inline">
-        <label class="required">	شحال من دورية كتديرو فالنهار لكل طاكسي؟ 
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="shifts_par_jour" value="1" required > 1</label>
-            <label class="radio-option"><input type="radio" name="shifts_par_jour" value="2" required > 2</label>
-            <label class="radio-option"><input type="radio" name="shifts_par_jour" value="أكثر" required > أكثر</label>
-          </div>
-        </label>
-
-        <label class="required">	شحال من شيفور كيسوق نفس الطاكسي؟ 
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="nb_chauffeurs" value="1" required > 1</label>
-            <label class="radio-option"><input type="radio" name="nb_chauffeurs" value="2" required > 2</label>
-            <label class="radio-option"><input type="radio" name="nb_chauffeurs" value="أكثر" required > أكثر</label>
-          </div>
-        </label>
-      </div>
-
-      <div class="section-header">كيفاش كتنظموا فالنهار الواحد؟</div>
-      <label><textarea name="organisation_chauffeurs" rows="2"></textarea></label>
-
-      <div class="section-header">مدة الخدمة</div>
-      <div class="inline">
-        <label class="required">	مدة الخدمة ديالك نتا  فالنهار (بالساعة)<input type="number" name="temps_travail" min="1" max="24" required ></label>
-        <label class="required">خدمة فالليل
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="travail_nuit" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="travail_nuit" value="لا" required > لا</label>
-          </div>
-        </label>
-      </div>
-
-      <div class="section-header">أيام العمل والعطلة</div>
-      <div class="inline">
-        <label class="required">عدد أيام الخدمة فالأسبوع<input type="number" name="jours_travail_semaine" min="1" max="7" required ></label>
-        <label class="required">العطلة السنوية (أيام)<input type="number" name="conge_annuel" min="0" required ></label>
-      </div>
-
-      <div class="section-header">كتخدم فشي حاجة أخرى من غير الطاكسي؟</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="autre_activite" value="نعم"> نعم</label>
-          <label class="radio-option"><input type="radio" name="autre_activite" value="لا"> لا</label>
-        </div>
-      </label>
-      <label id="preciser_activite_label" style="display:none;">حدد الخدمة الأخرى<input type="text" name="autre_activite_precision"></label>
-
-    </fieldset>
-
-    <!-- SECTION 2: تنظيم المهنة والمحطة -->
-    <fieldset id="section2" style="display:none">
-      <legend>2) تنظيم المهنة والخدمة فالمحطة</legend>
-      <p class="small">جاوب على المحطة الرئيسية إذا كتخدم فعدة محطات.</p>
-	  
-	  
-<div id="staionfreqente">
-        <div class="section-header">	كتخدم فشي محطة غالبا ولالا </div>
-        <label class="required">
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="staionfreqente" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="staionfreqente" value="لا"> لا</label>
-          </div>
-        </label>
-	  
-	  
-	  
-	  
-	  <div id="blocstrfreq" style="display:none">
-
-      <div class="section-header">	واش البلايص فين تسطاسيوني فالمحطة كافيين </div>
-      
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="station_suffisante" value="نعم"  > نعم</label>
-          <label class="radio-option"><input type="radio" name="station_suffisante" value="لا"  > لا</label>
-        </div>
-      
-
-      <div class="section-header">	واش كاين مسؤول أو رئيس معروف فالمحطة؟ </div>
-      
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="responsable_station" value="نعم"  > نعم</label>
-          <label class="radio-option"><input type="radio" name="responsable_station" value="لا"  > لا</label>
-        </div>
-     
-
-         <div class="section-header">	واش كاينين قوانين ديال الأسبقية أولا التناوب؟ ؟</div>
-     
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="regles_priorite" value="نعم"  > نعم</label>
-          <label class="radio-option"><input type="radio" name="regles_priorite" value="لا"  > لا</label>
-        </div>
-      
-      <div id="respect_regles_label" style="display:none">
-        <div class="section-header">إلا كانت، واش كايحتارموها الشيافر</div>
-        <label>
-          <select name="respect_regles">
-            <option value="">اختار...</option>
-			<option value="ديما">ديما</option>
-            <option value="أحياناً">أحياناً</option>
-            <option value="نادراً">نادراً</option>
-            <option value="ماشي">ماشي</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="section-header">	واش النظام العام ككل ديال المحطة‍ والكورتي كيتراقب من شي سلطة؟</div>
-      
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="pointage_controle" value="نعم"  > نعم</label>
-          <label class="radio-option"><input type="radio" name="pointage_controle" value="لا"  > لا</label>
-        </div>
-      
-
-      <div id="bloc_controle" style="display:none">
-        <div class="section-header">شكون كيراقب؟</div>
-        <label>
-		
-		<div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="autorite_controle" value="السلطات المحلية"> السلطات المحلية</label>
-          <label class="checkbox-option"><input type="checkbox" name="autorite_controle" value="نقابة/جمعية"> نقابة/جمعية</label>
-          <label class="checkbox-option"><input type="checkbox" name="autorite_controle" value="بوليس"> بوليس</label>
-          <label class="checkbox-option"><input type="text" name="autorite_controle_autre" placeholder="أخرى ... حدد الجهة"></label>
-        </div>
-		</label>
-		
-		
-        
-        <div class="section-header">واش المراقبة فعالة؟</div>
-        <label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="controle_efficace" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="controle_efficace" value="لا"> لا</label>
-          </div>
-        </label>
-        
-      </div>
-
-      </div>
-</div>
-
-<div class="section-header">خاضعين لنظام البوانطاج؟</div>
-        <label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="pointage_systeme" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="pointage_systeme" value="لا"> لا</label>
-          </div>
-        </label>
-
-        <div id="bloc_pointage" style="display:none">
-          <div class="section-header">وتيرة البوانطاج</div>
-          <label>
-            <div class="radio-group">
-              <label class="radio-option"><input type="radio" name="frequence_pointage" value="يومي"> يومي</label>
-              <label class="radio-option"><input type="radio" name="frequence_pointage" value="أسبوعي"> أسبوعي</label>
-              <label class="radio-option"><input type="radio" name="frequence_pointage" value="كل جوج سيمانات"> كل جوج سيمانات</label>
-              <label class="radio-option"><input type="radio" name="frequence_pointage" value="أخرى"> أخرى</label>
-              <input type="text" name="frequence_pointage_autre" placeholder="حدد...">
-            </div>
-          </label>
-          <div class="section-header">شكون كيراقب البوانطاج؟</div>
-          <label><input type="text" name="responsable_pointage" value="Police"></label>
-        </div>
-
-
-
-
-      <div class="section-header">آش من سرفيس كتدير؟</div>
-      <label class="required">
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="service_mode" value="جماعي خط ثابت"> جماعي - خط ثابت</label>
-          <label class="checkbox-option"><input type="checkbox" name="service_mode" value="جماعي حسب الطلب"> جماعي - حسب الطلب</label>
-          <label class="checkbox-option"><input type="checkbox" name="service_mode" value="الكورصا"> بالكورصا (وما كنشد حتى واحد فالطريق )</label>
-        </div>
-      </label>
-
-      <div id="bloc_collectif" style="display:none">
-        <div class="section-header">كيفاش كيتم تقاسم الخلاص؟</div>
-        <label>
-          <div class="checkbox-group">
-		    <label class="checkbox-option"><input type="checkbox" name="partage_paiement" value="الكونتور"> على حسب الكونتور لكل كليان طلع</label>
-            <label class="checkbox-option"><input type="checkbox" name="partage_paiement" value="على حسب المسافة"> على حسب المسافة</label>
-            <label class="checkbox-option"><input type="checkbox" name="partage_paiement" value="بالتساوي"> ثمن الرحلة معروف بالتساوي للركاب</label>
-			<label class="checkbox-option"><input type="checkbox" name="partage_paiement" value="كتقسم"> ثمن الرحلة كتقسم على الركاب</label>
-			<label class="checkbox-option"><input type="checkbox" name="partage_paiement" value="كنتفاهمو"> ثمن كنتفاهمو عليه أنا و الكليان</label>
-            <label class="checkbox-option"><input type="checkbox" name="partage_paiement" value="أخرى"> أخرى</label>
-            <input type="text" name="partage_paiement_autre" placeholder="وضح...">
-            </div>
-        </label>
-      </div>
-
-
-
-
-      <div class="section-header">كتخدم:</div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="type_service" value="الخط" required > فالخط (مسار ثابت)</label>
-          <label class="radio-option"><input type="radio" name="type_service" value="على حسب الطلب" required > على حسب الطلب</label>
-        </div>
-      </label>
-
-      <!-- bloc ligne -->
-      <div id="bloc_ligne" style="display:none">
-	  
-	  
-        <div class="section-header">واش الخط عندك قار ولا كتغيرو</div>
-        <label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="statutligne" value="قار "> قار</label>
-            <label class="radio-option"><input type="radio" name="statutligne" value="كيتغير"> كيتغير</label>
-            
-          </div>
-        </label>
-
-	  
-        <div class="section-header">على أي أساس كتختار الخط؟</div>
-        <label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="choix_ligne" value="تعيين"> التعيين</label>
-            <label class="radio-option"><input type="radio" name="choix_ligne" value="اختيار شخصي"> اختيار شخصي</label>
-            <label class="radio-option"><input type="radio" name="choix_ligne" value="وفرة  الزبائن"> وفرة  الزبائن</label>
-            <label class="radio-option"><input type="radio" name="choix_ligne" value="أخرى"> أخرى</label>
-            <input type="text" name="choix_ligne_autre" placeholder="حدد...">
-          </div>
-        </label>
-
-        <div class="section-header">واش كاين تنظيم لهذا الخط؟ من طرف من؟</div>
-        <label>
-          <div class="checkbox-group">
-            <label class="checkbox-option"><input type="checkbox" name="organisation_ligne" value="مسؤول المحطة"> مسؤول المحطة</label>
-            <label class="checkbox-option"><input type="checkbox" name="organisation_ligne" value="السلطات المحلية"> السلطات المحلية</label>
-            <label class="checkbox-option"><input type="checkbox" name="organisation_ligne" value="نقابة/جمعية"> نقابة/جمعية</label>
-            <label class="checkbox-option"><input type="checkbox" name="organisation_ligne" value="لا"> لا</label>
-          </div>
-        </label>
-
-        <div class="section-header">كيفاش الكليان كيعرف الخط ديالك؟</div>
-        <label>
-          <div class="checkbox-group">
-            <label class="checkbox-option"><input type="checkbox" name="info_ligne" value="مكتوبة فالمحطة"> مكتوبة فالمحطة</label>
-            <label class="checkbox-option"><input type="checkbox" name="info_ligne" value="مكتوبة فالسيارة"> مكتوبة فالسيارة</label>
-            <label class="checkbox-option"><input type="checkbox" name="info_ligne" value="شفويا"> شفويا</label>
-            <label class="checkbox-option"><input type="checkbox" name="info_ligne" value="تطبيق"> عبر تطبيق فـ التليفون</label>
-            <label class="checkbox-option"><input type="text" name="info_ligne_autre" placeholder="أخرى..."></label>
-          </div>
-        </label>
-      </div>
-
-      <!-- bloc demande -->
-      <div id="bloc_demande" style="display:none">
-        <div class="section-header">واش عندك مناطق مفضلة للانطلاق/الوصول؟</div>
-        <label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="zones_preferees" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="zones_preferees" value="لا"> لا</label>
-          </div>
-        </label>
-<div id="bloc_zonepref" style="display:none">
-        <div class="section-header">شكون كيتختار هاد المناطق؟</div>
-        <label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="choix_zones" value="الشيفور"> الشيفور</label>
-            <label class="radio-option"><input type="radio" name="choix_zones" value="المستغل"> المستغل</label>
-            <label class="radio-option"><input type="radio" name="choix_zones" value="مول لكريمة"> مول الكريما</label>
-          </div>
-        </label>
-		
-		<div class="section-header">كيفاش كيتحدد الاختيار؟</div>
-        <label>
-          <div class="checkbox-group">
-            <label class="checkbox-option"><input type="checkbox" name="criteres_zones" value="الطلب"> حسب الطلب</label>
-            <label class="checkbox-option"><input type="checkbox" name="criteres_zones" value="قريبة من الدار"> قريبة من الدار</label>
-            <label class="checkbox-option"><input type="checkbox" name="criteres_zones" value="مربحة"> مربحة</label>
-            <label class="checkbox-option"><input type="text" name="criteres_zones_autre" placeholder="أخرى..."></label>
-          </div>
-        </label>
-		
-</div>
-        
-
-        <div class="section-header">واش كاين تنظيم لهد الرحلات؟ من طرف من؟</div>
-        <label>
-          <div class="checkbox-group">
-            <label class="checkbox-option"><input type="checkbox" name="organisation_demande" value="المحطة"> المحطة</label>
-            <label class="checkbox-option"><input type="checkbox" name="organisation_demande" value="السلطات المحلية"> السلطات المحلية</label>
-            <label class="checkbox-option"><input type="checkbox" name="organisation_demande" value="نقابة/جمعية"> نقابة/جمعية</label>
-            <label class="checkbox-option"><input type="checkbox" name="organisation_demande" value="لا"> لا</label>
-          </div>
-        </label>
-      </div>
-
-      <hr>
-
-      <div class="section-header">واش كاين  الخصام والمدابزة  فالمحطة ولا البلاصة لكتهز منها الناس؟</div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="conflits_station" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="conflits_station" value="لا" required > لا</label>
-        </div>
-      </label>
-      <label id="nature_conflits_label" style="display:none">
-        <div class="section-header">النوع/التفاصيل</div>
-        <textarea name="nature_conflits" rows="2"></textarea>
-      </label>
-
-        <div class="section-header">39.	واش السلطات (بوليس أو سلطات محلية) كيتدخلو إلا كان مشكل؟ </div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="intervention_autorites" value="نعم" required > نعم</label>
-          <label class="radio-option"><input type="radio" name="intervention_autorites" value="لا" required > لا</label>
-        </div>
-      </label>
-    </fieldset>
-
-    
-    <!-- SECTION 3: نظرة على المهنة -->
-    <fieldset id="section3" style="display:none">
-      <legend>4) نظرة على المهنة وآفاق التطوير</legend>
-
-      <div class="section-header">	واش لاحظت هبوط أو طلوع فالطلب فـ 3 سنين اللي فاتو</div>
-      <label class="required">
-        <select name="evolution_demande" required >
-          <option value="">اختار...</option>
-          <option value="هبوط كبير">هبوط كبير</option>
-          <option value="هبوط بسيط">هبوط بسيط</option>
-          <option value="مستقر">مستقر</option>
-          <option value="في طلوع">في طلوع</option>
-        </select>
-      </label>
-
-      <div class="section-header">المنافسة الرئيسية</div>
-      <label>
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="concurrence" value="تطبيقات الحجز"> تطبيقات الحجز</label>
-          <label class="checkbox-option"><input type="checkbox" name="concurrence" value="النقل العشوائي"> النقل العشوائي</label>
-          <label class="checkbox-option"><input type="checkbox" name="concurrence" value="الطوبيس"> الطوبيس</label>
-          <label class="checkbox-option"><input type="checkbox" name="concurrence" value="طاكسيات أخرى"> طاكسيات أخرى</label>
-          <label class="checkbox-option"><input type="checkbox" name="concurrence" value="غير ذلك"> أخرى</label>
-        </div>
-      </label>
-
-            <div class="section-header">التكنولوجيا والتطبيقات</div>
-      <div class="inline">
-        <label class="required">عندك سمارتفون؟
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="smartphone" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="smartphone" value="لا" required > لا</label>
-          </div>
-        </label>
-
-        <label>كتستعمل تطبيق ديال الحجز؟
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="app_reservation" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="app_reservation" value="لا"> لا</label>
-          </div>
-        </label>
-
-        <label>منخرط فمصلحة ديال الحجز بالتليفون؟
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="centrale_telephonique" value="نعم"> نعم</label>
-            <label class="radio-option"><input type="radio" name="centrale_telephonique" value="لا"> لا</label>
-          </div>
-        </label>
-      </div>
-
-      <div class="section-header">مستعد تركب في الطاكسي ديالك:</div>
-      <label>
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="equipements" value="GPS"> GPS</label>
-          <label class="checkbox-option"><input type="checkbox" name="equipements" value="تطبيق"> تطبيق</label>
-          <label class="checkbox-option"><input type="checkbox" name="equipements" value="دفع الكتروني"> جهاز دفع بالبطاقة</label>
-        </div>
-      </label>
-
-      <div class="section-header">موافق تدخل مع:</div>
-      <label>
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="integrations" value="تعاونية"> تعاونية</label>
-          <label class="checkbox-option"><input type="checkbox" name="integrations" value="منصة الكترونية"> منصة إلكترونية</label>
-          <label class="checkbox-option"><input type="checkbox" name="integrations" value="شركة تسيير"> شركة تسيير</label>
-		  <label class="checkbox-option"><input type="checkbox" name="integrations" value="فمصلحة ديال الحجز بالتليفون"> فمصلحة ديال الحجز بالتليفون</label>
-          <label class="checkbox-option"><input type="checkbox" name="integrations" value="لا"> لا</label>
-        </div>
-      </label>
-
-      <div class="section-header">شنو هما المخاطر الكبار اللي كيتواجهو فهاد الخدمة ؟ </div>
-      <label>
-        <div class="checkbox-group">
-          <label class="checkbox-option"><input type="checkbox" name="risques" value="انعدام السلامة"> انعدام الأمن</label>
-          <label class="checkbox-option"><input type="checkbox" name="risques" value="الحوادث"> الحوادث</label>
-          <label class="checkbox-option"><input type="checkbox" name="risques" value="المرض"> المرض</label>
-          <label class="checkbox-option"><input type="text" name="risques_autre" placeholder="أخرى..."></label>
-        </div>
-      </label>
-    </fieldset>
-
-    <!-- SECTION 4: ملاحظات و اقتراحات -->
-    <fieldset id="section4" style="display:none">
-      <legend>5) الملاحظات والاقتراحات</legend>
-
-      <div class="section-header">التقييم العام للمهنة</div>
-      <div class="inline">
-        <label class="required">المهنة دابا
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="valorisation_metier" value="مقدّرة" required > مقدّرة</label>
-            <label class="radio-option"><input type="radio" name="valorisation_metier" value="غير مقدّرة" required > غير مقدّرة</label>
-          </div>
-        </label>
-
-        <label class="required">الوضع
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="stabilite_metier" value="مستقرة" required > مستقرة</label>
-            <label class="radio-option"><input type="radio" name="stabilite_metier" value="في تراجع" required > في تراجع</label>
-          </div>
-        </label>
-
-        <label class="required">	واش ناوي تكمل فهاد المهنة السنوات الجاية؟ 
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="continuer_metier" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="continuer_metier" value="لا" required > لا</label>
-          </div>
-        </label>
-
-        <label class="required">	واش موافق على تكوينات مهنية (السلامة، الخدمة، السياقة، التسيير)؟ 
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="formation_professionnelle" value="نعم" required > نعم</label>
-            <label class="radio-option"><input type="radio" name="formation_professionnelle" value="لا" required > لا</label>
-          </div>
-        </label>
-      </div>
-
-      <div class="section-header">	شنو هما في نظرك 3 أكبر مشاكل فالقطاع دابا ؟</div>
-      <label class="required">
-        <input type="text" name="probleme1" placeholder="المشكل 1" required >
-        <input type="text" name="probleme2" placeholder="المشكل 2" required >
-        <input type="text" name="probleme3" placeholder="المشكل 3" required >
-      </label>
-
-      <div class="section-header">	عندك اقتراحات عملية للتحسين، بما فيها الراحة والسلامة ديالك </div>
-      <label><textarea name="propositions" rows="4"></textarea></label>
-    </fieldset>
-	
-	<!-- SECTION 5: الجوانب الاقتصادية -->
-    <fieldset id="section5" style="display:none">
-      <legend>3) الجوانب الاقتصادية ومصاريف الخدمة</legend>
-
-      <div class="section-header">طريقة الخلاص ديالك أنت واش </div>
-      <label class="required">
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="modalite_retribution" value="يومية ثابتة" required > يومية ثابتة</label>
-          <label class="radio-option"><input type="radio" name="modalite_retribution" value="نسبة من المداخيل" required > نسبة من المداخيل</label>
-          <label class="radio-option"><input type="radio" name="modalite_retribution" value="بعد المصاريف" required > بعد المصاريف</label>
-          <label class="radio-option"><input type="radio" name="modalite_retribution" value="أخرى" required > أخرى</label>
-        </div>
-      </label>
-	        <label id="autre_retribution_label" style="display:none">
-        <div class="section-header">وضح</div>
-        <input type="text" name="autre_modalite_retribution">
-      </label>
-	  <div class="section-header">نسبة من المداخيل</div>
-		  <label><input type="number" name="POURCENTAGE" placeholder="النسبة"></label>
-
-
-
-      <div class="section-header">المصاريف اليومية</div>
-      <div class="inline">
-        <label class="required">الكازوال (درهم/اليوم)<input type="number" name="depense_carburant" min="0" required ></label>
-        <label>كراء الطاكسي الروسيتة (درهم/اليوم)<input type="number" name="depense_location" min="0"></label>
-		
-		
-		
-		
-		
-		
-		
-		<label>واش الروسيتة كتغير في اشهر الذروة (درهم/اليوم)<div class="radio-group">
-          <label class="radio-option"><input type="radio" name="recette_fixe"  value="نعم" > نعم</label>
-          <label class="radio-option"><input type="radio" name="recette_fixe" value="لا"  > لا</label>
-         
-        </div></label>
-		
-		
-		<div id="recette_var" style="display:none">
-        <div class="section-header"> ثمن ومدة الروسيتة في اشهر الذروة	</div>
-        <label>
+		  <option value="CASABLANCA">CASABLANCA</option>
+		  <option value="MARRAKECH">MARRAKECH</option>
+          <option value="RABAT">RABAT</option>
+          <option value="SALE">SALE</option>
+		  <option value="TEMARA">TEMARA</option>
           
-            <label> إلا كتغيرشحال كتخلص بحال دابا <input type="number" name="recettesaisoniarevariable" ></label>
-            <label> شحال كتبقى مغيرة المدة باليوم <input type="number" name="recettesaisoniareduree" > </label>
-          </div>
-        </label>
-      </div>
 
 
+        </select>
+      </label></label>
+                </div>
+               
+			   
+			    <div class="question">
+                    <label>مكان البحث: <label class="required">
+          <select name="lieu_entretien" required >
+          <option value="">اختار...</option>
+		  
+          <option value="Station Kyoto">Station Kyoto</option>
+          <option value="Station Terminus 81 (Ain Chok) ">Station Terminus 81 (Ain Chok) </option>
+		  <option value="Zone Station Zenith">Zone Station Zenith </option>
+		   
+		  <option value="BAB CHELLAH">RABAT STATION BAB CHELLAH GT</option>
+          <option value="RABAT VILLE">RABAT VILLE PT VERS AGDAL</option>
+          <option value="STATION CHATEAU"> SALE STATION CHATEAU PT ET GT</option>
+		  <option value="ZONE ARRIBAT CENTRE">ZONE ARRIBAT CENTRE AGDAL</option>
+          <option value="STATION MILANO">STATION MILANO TEMARA PT ET GT</option>
+		  <option value="Aéroport">MARRAKECH Aéroport 30 PT et GT CORSA</option>
+		  <option value="Zone Hotel Tazi">MARRAKECH Zone Hotel Tazi (Touristes uniquement)</option>
+		  <option value="Zone Gare ferroviaire">MARRAKECH Zone Gare ferroviaire GT CORSA</option>
+		  <option value="Zone Carré Eden">MARRAKECH Zone Carré Eden PT </option>
+		  <option value="Zone Bab Doukkala">MARRAKECH Zone Bab Doukkala PT </option>
+		  <option value="Stations Arsat El Maach">MARRAKECH Stations Arsat El Maach PT et GT</option>
+		  <option value="Stations GT Bab Doukkala">MARRAKECH Stations GT Bab Doukkala </option>
+			
 
 
+        </select>
+      </label>
+                </div>
+                
+				
+				
+				<div class="question">
+                    <label>التاريخ: <input type="date" name="date" required> الساعة: <input type="time" name="heure" required></label>
+                </div>
+            </div>
 
-
-
-
-      <div class="section-header">المصاريف الدورية</div>
-      <div class="inline">
-        <label>الصيانة/التأمين/الفحص التقني (درهم/السنة)<input type="number" name="depense_entretien" min="0"></label>
-        <label>أخرى — المبلغ<input type="number" name="autres_depenses_montant" min="0"></label>
-      </div>
-      <label>أخرى — المدة <input type="text" name="autres_depenses_periodicite" placeholder="كل أسبوع/شهر/..."></label>
-
-      <div class="section-header">واجب كراء الكريما</div>
-      <div class="inline">
-        <label>واجب كراء الكريما (درهم/الشهر)<input type="number" name="redevance_mois" min="0"></label>
-        <label>مبلغ الحلاوة عند توقيع الكونترا<input type="number" name="redevance_signature" min="0"></label>
-      </div>
-
-      <div class="section-header">تواتر الحلاوة</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="periodicite_redevance" value="10 سنين"> 10 سنين</label>
-          <label class="radio-option"><input type="radio" name="periodicite_redevance" value="12 سنة"> 12 سنة</label>
-          <label class="radio-option"><input type="radio" name="periodicite_redevance" value="أخرى"> أخرى</label>
-          <input type="text" name="autre_periodicite_redevance" placeholder="حدد...">
+            <div class="navigation">
+                <div></div>
+                <button type="button" class="next-btn" onClick="showSection(1)">التالي →</button>
+            </div>
         </div>
-      </label>
 
-      <div class="section-header">الإحصائيات اليومية</div>
-      <div class="inline">
-        <label class="">المسافة اليومية (كم)<input type="number" name="distance_parcourue" min="1" required ></label>
-        <label class="">عدد الكورصات فالنهار<input type="number" name="courses_par_jour" min="0"  ></label>
-        <label class="">عدد الركاب فالنهار<input type="number" name="passagers_par_jour" min="0"  ></label>
-      </div>
-	  
-	  <div class="section-header">شكون كيتكلف بالمازوط</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="prise_charge_carburant" value="انتَ"> انتَ</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_carburant" value="المالك"> المالك</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_carburant" value="النسبة "> كاتحيد من المصاريف عاد كانخد النسبة ديالي</label>
+        <!-- Section 1 -->
+        <div class="section" id="section1">
+            <h2>1. معلومات على المستعمل</h2>
+
+           
+		   <div class="question">
+                <p>1. نوع الرحلة:</p>
+                <div class="options">
+                    <label><input type="radio" name="Type" value="Petit Taxi" required> طاكسي صغيرة</label>
+                    <label><input type="radio" name="Type" value="Grand Taxi"> طاكسي كبيرة</label>
+                </div>
+            </div>
+		   
+		   
+		   
+		    <div class="question">
+                <p>1. الجنس:</p>
+                <div class="options">
+                    <label><input type="radio" name="genre" value="homme" required> راجل</label>
+                    <label><input type="radio" name="genre" value="femme"> مرا</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. العمر:</p>
+                <div class="options">
+                    <label><input type="radio" name="age" value="moins_25" required> أقل من 25 عام</label>
+                    <label><input type="radio" name="age" value="26_40"> من 26 حتى 40</label>
+                    <label><input type="radio" name="age" value="41_60"> من 41 حتى 60</label>
+                    <label><input type="radio" name="age" value="plus_60"> أكثر من 60</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. الإقامة:</p>
+                <div class="options">
+                    <label><input type="radio" name="residence" value="resident" required> مقيم</label>
+                    <label><input type="radio" name="residence" value="touriste"> سائح</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. الوضعية المهنية:</p>
+                <div class="options">
+                    <label><input type="radio" name="statut_pro" value="etudiant" required> تلميذ/طالب</label>
+                    <label><input type="radio" name="statut_pro" value="employe"> موظف</label>
+                    <label><input type="radio" name="statut_pro" value="independant"> خدام حر</label>
+                    <label><input type="radio" name="statut_pro" value="retraite"> متقاعد</label>
+                    <label><input type="radio" name="statut_pro" value="sans_emploi"> ما خدامش</label>
+                    <label><input type="radio" name="statut_pro" value="autre"> أخرى: <input type="text" name="statut_pro_autre"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. القطاع (إلا كنت خدام):</p>
+                <div class="options">
+                    <label><input type="radio" name="secteur" value="public" > عام</label>
+                    <label><input type="radio" name="secteur" value="prive"> خاص</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. الدخل الشهري الصافي:</p>
+                <div class="options">
+                    <label><input type="radio" name="revenu" value="moins_3000" required> أقل من 3000 درهم</label>
+                    <label><input type="radio" name="revenu" value="3001_5000"> من 3001 حتى 5000</label>
+                    <label><input type="radio" name="revenu" value="5001_8000"> من 5001 حتى 8000</label>
+                    <label><input type="radio" name="revenu" value="8001_12000"> من 8001 حتى 12000</label>
+                    <label><input type="radio" name="revenu" value="plus_12000"> أكثر من 12000</label>
+                    <label><input type="radio" name="revenu" value="sans_revenu"> ما عنديش دخل قار</label>
+                    <label><input type="radio" name="revenu" value="ne_souhaite_pas"> ما بغيتش نحدد</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. السكن: (الجماعة <input type="text" name="commune" required>)</p>
+                <div class="options">
+                    <label><input type="radio" name="zone_habitation" value="urbaine" required> منطقة حضرية</label>
+                    <label><input type="radio" name="zone_habitation" value="semi_urbaine"> منطقة شبه حضرية</label>
+                    <label><input type="radio" name="zone_habitation" value="rurale"> منطقة قروية</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. واش عندك طوموبيل أو موطور؟</p>
+                <div class="options">
+                    <label><input type="radio" name="possede_vehicule" id="has_vehicle_yes" value="oui" required> إيه</label>
+                    <div id="vehicle_type" style="margin-right:20px; display:none;">
+                        <label><input type="radio" name="type_vehicule" value="voiture"> طوموبيل</label>
+                        <label><input type="radio" name="type_vehicule" value="moto"> موطور</label>
+                    </div>
+                    <label><input type="radio" name="possede_vehicule" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button type="button" class="prev-btn" onClick="showSection(0)">← السابق</button>
+                <button type="button" class="next-btn" onClick="showSection(2)">التالي →</button>
+            </div>
         </div>
-      </label>
-      <label id="part_carburante_label" style="display:none">
-        <div class="section-header">نسبة مشاركتك (%)</div>
-        <input type="number" name="part_carburant" min="0" max="100">
-      </label>
-	  
-	  
 
-      <div class="section-header">شكون كيتكلف بالتأمين؟</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="prise_charge_assurance" value="انتَ"> انتَ</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_assurance" value="المالك"> المالك</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_assurance" value="مشاركة"> مشاركة</label>
+        <!-- Section 2 -->
+        <div class="section" id="section2">
+            <h2>2. استعمال الطاكسي</h2>
+
+            <div class="question">
+                <p>9. شنو هما وسائل النقل اللي كتستعملها بزاف ديال المرات: (على الأقل اختر واحد)</p>
+                <div class="options">
+                    <!-- on ne met pas required ici : validation JS vérifiera au moins 1 -->
+                    <label><input type="checkbox" name="transport_utilise" value="taxi_petit_individuel"> طاكسي صغير فردي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="taxi_petit_collectif"> طاكسي صغير جماعي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="taxi_grand_collectif"> طاكسي كبير جماعي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="taxi_grand_individuel"> طاكسي كبير فردي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="bus"> الطوبيس</label>
+                    <label><input type="checkbox" name="transport_utilise" value="tramway"> الطراموي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="transport_touristique"> نقل سياحي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="transport_double"> نقل مزدوج</label>
+                    <label><input type="checkbox" name="transport_utilise" value="transport_informel"> نقل عشوائي</label>
+                    <label><input type="checkbox" name="transport_utilise" value="taxi_telephone"> نقل خاص مطلوب عبر الهاتف أو تطبيق أو موقع </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. شحال دالمرات كتستعمل الطاكسي:</p>
+                <div class="options">
+                    <label><input type="radio" name="frequence_taxi" value="quotidien" required> يومي</label>
+                    <label><input type="radio" name="frequence_taxi" value="2_3_semaine"> 2-3 مرات فالأسبوع</label>
+                    <label><input type="radio" name="frequence_taxi" value="1_semaine"> مرة فالأسبوع</label>
+                    <label><input type="radio" name="frequence_taxi" value="1_mois"> مرة فالشهر</label>
+                    <label><input type="radio" name="frequence_taxi" value="rarement"> قليل</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>11. السبب الرئيسي باش كتستعمل الطاكسي:</p>
+                <div class="options">
+                    <label><input type="radio" name="raison_utilisation" value="travail" required> الخدمة</label>
+                    <label><input type="radio" name="raison_utilisation" value="etudes"> القراية</label>
+                    <label><input type="radio" name="raison_utilisation" value="sante"> الصحة</label>
+                    <label><input type="radio" name="raison_utilisation" value="shopping"> التسوق</label>
+                    <label><input type="radio" name="raison_utilisation" value="famille"> زيارة العائلة</label>
+                    <label><input type="radio" name="raison_utilisation" value="loisirs"> الترفيه</label>
+                    <label><input type="radio" name="raison_utilisation" value="autre"> أخرى: <input type="text" name="raison_utilisation_autre"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>12. المسافة المقطوعة غالباً خلال كل تنقل:</p>
+                <div class="options">
+                    <label><input type="radio" name="distance" value="moins_5km" required> أقل من 5 كلم</label>
+                    <label><input type="radio" name="distance" value="5_20km"> من 5 حتى 20 كلم</label>
+                    <label><input type="radio" name="distance" value="plus_20km"> أكثر من 20 كلم</label>
+                    <label><input type="radio" name="distance" value="ne_sait_pas"> ما عارفش</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>13. نوع الرحلة:</p>
+                <div class="options">
+                    <label><input type="radio" name="type_trajet" value="intra_ville" required> داخل المدينة</label>
+                    <label><input type="radio" name="type_trajet" value="inter_communes"> بين الجماعات</label>
+                    <label><input type="radio" name="type_trajet" value="inter_villes"> بين المدن</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>14. البلاصة اللي كتنطلق منها بزاف: <input type="text" name="point_depart" required></label>
+            </div>
+
+            <div class="question">
+                <label>15. الوجهة اللي كاتمشي لها بزاف: <input type="text" name="destination" required></label>
+            </div>
+
+            <div class="question">
+                <label>16. مدة الرحلة فالطاكسي: <input type="number" min="0" name="duree_trajet" required> دقيقة</label>
+            </div>
+
+            <div class="question">
+                <label>17. وقت الانتظار حتى يجي الطاكسي: <input type="number" min="0" name="temps_attente" required> دقيقة</label>
+            </div>
+
+            <div class="question">
+                <p>18. شنو هي طريقة الأداء لي كتستعملو:</p>
+                <div class="options">
+                    <label><input type="radio" name="methode_paiement" value="especes" required> نقداً</label>
+                    <label><input type="radio" name="methode_paiement" value="carte"> بالبطاقة البنكية</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>19. شحال كاتسرف فالأسبوع على الطاكسي:</p>
+                <div class="options">
+                    <label><input type="radio" name="depense_hebdo" value="moins_20" required> أقل من 20 درهم</label>
+                    <label><input type="radio" name="depense_hebdo" value="20_50"> من 20 حتى 50 درهم</label>
+                    <label><input type="radio" name="depense_hebdo" value="50_100"> من 50 حتى 100 درهم</label>
+                    <label><input type="radio" name="depense_hebdo" value="plus_100"> أكثر من 100 درهم (حدد <input type="number" min="101" name="depense_hebdo_plus_100" style="width:80px; display:inline-block;"> درهم)</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>20. واش كتستعمل وسائل نقل أخرى فنفس الرحلة (دمج وسائل النقل)؟</p>
+                <div class="options">
+                    <label><input type="radio" name="transport_combiné" id="combined_yes" value="oui" required> إيه</label>
+                    <div id="transport_types" style="margin-right:20px; display:none;">
+                        <label><input type="checkbox" name="type_transport_combiné" value="bus"> طوبيس</label>
+                        <label><input type="checkbox" name="type_transport_combiné" value="tramway"> ترامواي</label>
+                        <label><input type="checkbox" name="type_transport_combiné" value="taxi_grand"> طاكسي كبير</label>
+                        <label><input type="checkbox" name="type_transport_combiné" value="taxi_petit"> طاكسي صغير</label>
+                        <label><input type="checkbox" name="type_transport_combiné" value="transport_double"> نقل مزدوج</label>
+                        <label><input type="checkbox" name="type_transport_combiné" value="voiture_perso"> سيارة خاصة</label>
+                        <label><input type="checkbox" name="type_transport_combiné" value="autre"> أخرى: <input type="text" name="type_transport_combiné_autre"></label>
+                    </div>
+                    <label><input type="radio" name="transport_combiné" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>21. واش مستعد تستعمل تطبيق فالتيليفون باش تحجز وتخلص الرحلات ديال الطاكسي؟</p>
+                <div class="options">
+                    <label><input type="radio" name="pret_app" value="oui" required> إيه</label>
+                    <label><input type="radio" name="pret_app" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button type="button" class="prev-btn" onClick="showSection(1)">← السابق</button>
+                <button type="button" class="next-btn" onClick="showSection(3)">التالي →</button>
+            </div>
         </div>
-      </label>
-      <label id="part_assurance_label" style="display:none">
-        <div class="section-header">نسبة مشاركتك (%)</div>
-        <input type="number" name="part_assurance" min="0" max="100">
-      </label>
 
-      <div class="section-header">شكون كيتكلف بالصيانة؟</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="prise_charge_entretien" value="انتَ"> انتَ</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_entretien" value="المالك"> المالك</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_entretien" value="مشاركة"> مشاركة</label>
+        <!-- Section 3 -->
+        <div class="section" id="section3">
+            <h2>3. تجربة الخدمة</h2>
+
+            <div class="question">
+                <label>22. شحال كتخلص غالباً على هاد النوع من الرحلة: <input type="number" min="0" name="cout_trajet" required> درهم</label>
+                <div class="options">
+                    <label><input type="radio" name="type_prix" value="compteur" required> بالكونطور</label>
+                    <label><input type="radio" name="type_prix" value="fixe"> ثمن محدد</label>
+                    <label><input type="radio" name="type_prix" value="negocie"> ثمن تفاوضي</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>23. واش الثمن كان معلّق أو تعلن ليك؟</p>
+                <div class="options">
+                    <label><input type="radio" name="prix_annonce" value="oui" required> إيه</label>
+                    <label><input type="radio" name="prix_annonce" value="non"> لا</label>
+                    <label><input type="radio" name="prix_annonce" value="na"> ما بحثتش</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>24. واش الثمن المعلّق كيتحترم؟</p>
+                <div class="options">
+                    <label><input type="radio" name="prix_respecte" value="oui" required> إيه</label>
+                    <label><input type="radio" name="prix_respecte" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>25. كيفاش كاتجيكم الخدمة ديال الطاكسي لي كاتستعملوا:</p>
+                <div class="options">
+                    <label><input type="radio" name="qualite_service" value="excellente" required> ممتازة</label>
+                    <label><input type="radio" name="qualite_service" value="bonne"> مزيانة</label>
+                    <label><input type="radio" name="qualite_service" value="moyenne"> متوسطة</label>
+                    <label><input type="radio" name="qualite_service" value="mauvaise"> ضعيفة</label>
+                    <label><input type="radio" name="qualite_service" value="tres_mauvaise"> ضعيفة بزاف</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>26. واش نتوما راضيين أو ماشي راضيين:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>المعيار</th><th>راضي بزاف</th><th>راضي</th><th>محايد</th><th>ماشي راضي شوية</th><th>ماشي راضي</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>الخدمة موفّرة</td>
+                            <td><input type="radio" name="service_disponible" value="5" required></td>
+                            <td><input type="radio" name="service_disponible" value="4"></td>
+                            <td><input type="radio" name="service_disponible" value="3"></td>
+                            <td><input type="radio" name="service_disponible" value="2"></td>
+                            <td><input type="radio" name="service_disponible" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>الراحة ديال الركوب</td>
+                            <td><input type="radio" name="confort" value="5" required></td>
+                            <td><input type="radio" name="confort" value="4"></td>
+                            <td><input type="radio" name="confort" value="3"></td>
+                            <td><input type="radio" name="confort" value="2"></td>
+                            <td><input type="radio" name="confort" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>مظهر وتصرف السائق</td>
+                            <td><input type="radio" name="comportement_chauffeur" value="5" required></td>
+                            <td><input type="radio" name="comportement_chauffeur" value="4"></td>
+                            <td><input type="radio" name="comportement_chauffeur" value="3"></td>
+                            <td><input type="radio" name="comportement_chauffeur" value="2"></td>
+                            <td><input type="radio" name="comportement_chauffeur" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>الإحساس بالأمان</td>
+                            <td><input type="radio" name="securite" value="5" required></td>
+                            <td><input type="radio" name="securite" value="4"></td>
+                            <td><input type="radio" name="securite" value="3"></td>
+                            <td><input type="radio" name="securite" value="2"></td>
+                            <td><input type="radio" name="securite" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>نظافة السيارة</td>
+                            <td><input type="radio" name="proprete" value="5" required></td>
+                            <td><input type="radio" name="proprete" value="4"></td>
+                            <td><input type="radio" name="proprete" value="3"></td>
+                            <td><input type="radio" name="proprete" value="2"></td>
+                            <td><input type="radio" name="proprete" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>وقت الانتظار</td>
+                            <td><input type="radio" name="temps_attente_eval" value="5" required></td>
+                            <td><input type="radio" name="temps_attente_eval" value="4"></td>
+                            <td><input type="radio" name="temps_attente_eval" value="3"></td>
+                            <td><input type="radio" name="temps_attente_eval" value="2"></td>
+                            <td><input type="radio" name="temps_attente_eval" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>السياقة الآمنة</td>
+                            <td><input type="radio" name="conduite_securisee" value="5" required></td>
+                            <td><input type="radio" name="conduite_securisee" value="4"></td>
+                            <td><input type="radio" name="conduite_securisee" value="3"></td>
+                            <td><input type="radio" name="conduite_securisee" value="2"></td>
+                            <td><input type="radio" name="conduite_securisee" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>الثمن</td>
+                            <td><input type="radio" name="satisfaction_prix" value="5" required></td>
+                            <td><input type="radio" name="satisfaction_prix" value="4"></td>
+                            <td><input type="radio" name="satisfaction_prix" value="3"></td>
+                            <td><input type="radio" name="satisfaction_prix" value="2"></td>
+                            <td><input type="radio" name="satisfaction_prix" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td>التأثير على البيئة</td>
+                            <td><input type="radio" name="impact_environnement" value="5" required></td>
+                            <td><input type="radio" name="impact_environnement" value="4"></td>
+                            <td><input type="radio" name="impact_environnement" value="3"></td>
+                            <td><input type="radio" name="impact_environnement" value="2"></td>
+                            <td><input type="radio" name="impact_environnement" value="1"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="question">
+                <p>27. واش سبق ليك ما مشيتيش لشي بلاصة حيت ما لقيتيش طاكسي؟</p>
+                <div class="options">
+                    <label><input type="radio" name="destination_manquee" value="oui" required> إيه</label>
+                    <label><input type="radio" name="destination_manquee" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>28. واش كتستعمل الطاكسي حيت مضطر؟</p>
+                <div class="options">
+                    <label><input type="radio" name="utilisation_forcee" value="pas_offre" required> إيه، ما كايناش عروض</label>
+                    <label><input type="radio" name="utilisation_forcee" value="offre_inadaptee"> إيه، كاينة عروض ولكن ماشي مناسبة</label>
+                    <label><input type="radio" name="utilisation_forcee" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>29. واش فايت طحتي فواحد من هاد المشاكل (اختيارات متعددة):</p>
+                <div class="options">
+                    <label><input type="checkbox" name="problemes_rencontres" value="refus"> رفض النقل</label>
+                    <label><input type="checkbox" name="problemes_rencontres" value="prix_eleve"> ثمن غالي بزاف</label>
+                    <label><input type="checkbox" name="problemes_rencontres" value="mauvais_comportement"> تصرف غير لائق من السائق</label>
+                    <label><input type="checkbox" name="problemes_rencontres" value="pas_compteur"> ما كيستعملش الكونطور</label>
+                    <label><input type="checkbox" name="problemes_rencontres" value="mauvais_etat"> السيارة فحالة خايبة</label>
+                    <label><input type="checkbox" name="problemes_rencontres" value="aucun_probleme"> ما كاين حتى مشكل</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>30. واش بغيت الخدمة تتحسن؟</p>
+                <div class="options">
+                    <label><input type="radio" name="amelioration_service" id="improve_yes" value="oui" required> إيه</label>
+                    <label><input type="radio" name="amelioration_service" value="non"> لا</label>
+                    <div id="improvement_suggestions" style="margin-top:10px; display:none;">
+                       
+					   
+					<div class="question">
+                <p>29. إلا كان إيه: كيفاش؟ </p>
+                <div class="options">
+                    <label><input type="checkbox" name="suggestions_amelioration" value="Améliorer le service">تحسين خدمة سيارات الأجرة</label>
+                    <label><input type="checkbox" name="suggestions_amelioration" value="Améliorer le confort"> تحسين راحة الركاب</label>
+                    <label><input type="checkbox" name="suggestions_amelioration" value="Plus de taxi"> تحسين تقليص وقت الانتظار</label>
+                    <label><input type="checkbox" name="suggestions_amelioration" value="Améliorer le comportement"> تحسين السلوك والعلاقة مع الزبناء</label>
+                    <label><input type="checkbox" name="suggestions_amelioration" value="Réduire les tarifs">تحسين تخفيض الأسعار</label>
+                    
+					                   			
+											
+					
+                </div>
+            </div>   
+					   
+					  		   
+					   
+					    
+                    </div>
+                </div>
+            </div>
+                           <div class="question">
+						   
+						   
+						   
+						 <label><input type="text" name="suggestions_amelioration_autre" value=" ">  بغيتي لخدمة تتحسن في مجال آخر أذكره؟</label> </div>
+          
+		  
+		   <div class="question">
+			
+                <label>ملاحظات أو اقتراحات: <textarea name="commentaires"  placeholder= "سمع وشوف في الجدول صيغ الاقتراحات "></textarea></label>
+            </div>
+		  
+		 
+		   
+
+
+
+
+            <div class="navigation">
+                <button type="button" class="prev-btn" onClick="showSection(2)">← السابق</button>
+                <button type="button" class="next-btn" onClick="showSection(4)">التالي →</button>
+            </div>
         </div>
-      </label>
-      <label id="part_entretien_label" style="display:none">
-        <div class="section-header">نسبة مشاركتك (%)</div>
-        <input type="number" name="part_entretien" min="0" max="100">
-      </label>
 
-      <div class="section-header">شكون كيتكلف بالإصلاحات؟</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="prise_charge_reparations" value="انتَ"> انتَ</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_reparations" value="المالك"> المالك</label>
-          <label class="radio-option"><input type="radio" name="prise_charge_reparations" value="مشاركة"> مشاركة</label>
+        <!-- Section 4 (VTC) -->
+        <div class="section" id="section4">
+            <h2>4. استعمال خدمات طوموبيلات ديال النقل عبر التطبيقات (VTC)</h2>
+
+            <div class="question">
+                <p>31. ها واش سبق لك استعملتي سيارات النقل عبر التطبيقات؟</p>
+                <div class="options">
+                    <label><input type="radio" name="utilisation_vtc" id="vtc_yes" value="oui" required> إيه</label>
+                    <label><input type="radio" name="utilisation_vtc" value="non"> لا</label>
+                </div>
+            </div>
+
+            <div id="vtc_section" style="display:none; margin-top:10px;">
+                <div class="question">
+                    <p>32. شحال دالمرات كتستعمل سيارات النقل عبر التطبيقات؟</p>
+                    <div class="options">
+                        <label><input type="radio" name="frequence_vtc" value="quotidien"> يومي</label>
+                        <label><input type="radio" name="frequence_vtc" value="2_3_semaine"> 2-3 مرات فالأسبوع</label>
+                        <label><input type="radio" name="frequence_vtc" value="1_semaine"> مرة فالأسبوع</label>
+                        <label><input type="radio" name="frequence_vtc" value="1_mois"> مرة فالشهر</label>
+                        <label><input type="radio" name="frequence_vtc" value="rarement"> قليل</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>33. شحال المصروف الأسبوعي على سيارات النقل عبر التطبيقات:</p>
+                    <div class="options">
+                        <label><input type="radio" name="depense_vtc" value="moins_20"> أقل من 20 درهم</label>
+                        <label><input type="radio" name="depense_vtc" value="20_50"> من 20 حتى 50 درهم</label>
+                        <label><input type="radio" name="depense_vtc" value="50_100"> من 50 حتى 100 درهم</label>
+                        <label><input type="radio" name="depense_vtc" value="plus_100"> أكثر من 100 درهم (حدد <input type="number" min="101" name="depense_vtc_plus_100" style="width:80px; display:inline-block;"> درهم)</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>34. كيفاش كاتجيكم لخدمة ديال سيارات النقل عبر التطبيقات:</p>
+                    <div class="options">
+                        <label><input type="radio" name="qualite_vtc" value="excellente"> ممتازة</label>
+                        <label><input type="radio" name="qualite_vtc" value="bonne"> مزيانة</label>
+                        <label><input type="radio" name="qualite_vtc" value="moyenne"> متوسطة</label>
+                        <label><input type="radio" name="qualite_vtc" value="mauvaise"> ضعيفة</label>
+                        <label><input type="radio" name="qualite_vtc" value="tres_mauvaise"> ضعيفة بزاف</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>35. مقدار الرضى ديالك بخصوص المعايير التالية بالنسبة لسيارات النقل عبر التطبيقات:</p>
+                    <table>
+                        <thead>
+                            <tr><th>المعيار</th><th>راضي بزاف</th><th>راضي</th><th>محايد</th><th>ماشي راضي شوية</th><th>ماشي راضي</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الخدمة موفّرة</td>
+                                <td><input type="radio" name="service_disponible_vtc" value="5"></td>
+                                <td><input type="radio" name="service_disponible_vtc" value="4"></td>
+                                <td><input type="radio" name="service_disponible_vtc" value="3"></td>
+                                <td><input type="radio" name="service_disponible_vtc" value="2"></td>
+                                <td><input type="radio" name="service_disponible_vtc" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>الراحة ديال الركوب</td>
+                                <td><input type="radio" name="confort_vtc" value="5"></td>
+                                <td><input type="radio" name="confort_vtc" value="4"></td>
+                                <td><input type="radio" name="confort_vtc" value="3"></td>
+                                <td><input type="radio" name="confort_vtc" value="2"></td>
+                                <td><input type="radio" name="confort_vtc" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>مظهر وتصرف السائق</td>
+                                <td><input type="radio" name="comportement_chauffeur_vtc" value="5"></td>
+                                <td><input type="radio" name="comportement_chauffeur_vtc" value="4"></td>
+                                <td><input type="radio" name="comportement_chauffeur_vtc" value="3"></td>
+                                <td><input type="radio" name="comportement_chauffeur_vtc" value="2"></td>
+                                <td><input type="radio" name="comportement_chauffeur_vtc" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>الإحساس بالأمان</td>
+                                <td><input type="radio" name="securite_vtc" value="5"></td>
+                                <td><input type="radio" name="securite_vtc" value="4"></td>
+                                <td><input type="radio" name="securite_vtc" value="3"></td>
+                                <td><input type="radio" name="securite_vtc" value="2"></td>
+                                <td><input type="radio" name="securite_vtc" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>وقت الانتظار</td>
+                                <td><input type="radio" name="temps_attente_vtc" value="5"></td>
+                                <td><input type="radio" name="temps_attente_vtc" value="4"></td>
+                                <td><input type="radio" name="temps_attente_vtc" value="3"></td>
+                                <td><input type="radio" name="temps_attente_vtc" value="2"></td>
+                                <td><input type="radio" name="temps_attente_vtc" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>السياقة الآمنة</td>
+                                <td><input type="radio" name="conduite_securisee_vtc" value="5"></td>
+                                <td><input type="radio" name="conduite_securisee_vtc" value="4"></td>
+                                <td><input type="radio" name="conduite_securisee_vtc" value="3"></td>
+                                <td><input type="radio" name="conduite_securisee_vtc" value="2"></td>
+                                <td><input type="radio" name="conduite_securisee_vtc" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>الثمن</td>
+                                <td><input type="radio" name="satisfaction_prix_vtc" value="5"></td>
+                                <td><input type="radio" name="satisfaction_prix_vtc" value="4"></td>
+                                <td><input type="radio" name="satisfaction_prix_vtc" value="3"></td>
+                                <td><input type="radio" name="satisfaction_prix_vtc" value="2"></td>
+                                <td><input type="radio" name="satisfaction_prix_vtc" value="1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button type="button" class="prev-btn" onClick="showSection(3)">← السابق</button>
+                <button type="submit" id="submitBtn" class="submit-btn">إرسال الاستمارة</button>
+            </div>
         </div>
-      </label>
-      <label id="part_reparations_label" style="display:none">
-        <div class="section-header">نسبة مشاركتك (%)</div>
-        <input type="number" name="part_reparations" min="0" max="100">
-      </label>
+    </form>
 
-      <div class="section-header">المداخيل اليومية</div>
-      <div class="inline">
-        <label class="">المداخيل قبل المصاريف/اليوم (درهم)<input type="number" name="revenu_brut" min="0"  ></label>
-        <label class="">المداخيل الصافية/اليوم (درهم)<input type="number" name="revenu_net" min="0"  ></label>
-      </div>
+    <script>
+        // Single JS block for navigation, conditional UI and validation + submit
+        const totalSections = 5;
+        let currentSection = 0;
 
-      <div class="section-header">كتستعمل شي وسيلة لمتابعة المداخيل؟</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="outil_suivi" value="كناش"> كناش</label>
-          <label class="radio-option"><input type="radio" name="outil_suivi" value="تطبيق"> تطبيق</label>
-          <label class="radio-option"><input type="radio" name="outil_suivi" value="لا شيء"> لا شيء</label>
-        </div>
-      </label>
-
-      <div class="section-header">عندك مصدر دخل آخر؟</div>
-      <label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="autre_revenu" value="نعم"> نعم</label>
-          <label class="radio-option"><input type="radio" name="autre_revenu" value="لا"> لا</label>
-        </div>
-      </label>
-      <label id="preciser_revenu_label" style="display:none">
-        <div class="section-header">حدد الدخل الآخر</div>
-        <input type="text" name="autre_revenu_precision">
-      </label>
-    </fieldset>
-
-
-    <!-- Navigation buttons -->
-    <div class="nav-buttons" id="navButtons">
-      <button type="button" id="prevBtn" class="btn-secondary" onClick="prevSection()">السابق</button>
-      <button type="button" id="nextBtn" class="btn-primary" onClick="nextSection()">الموالي</button>
-    </div>
-
-    <div style="text-align:center;margin-top:20px">
-      <button type="submit" id="submitBtn" class="btn-primary" style="display:none;width:100%;padding:16px;font-size:1.1rem;">صيفط الاستمارة</button>
-    </div>
-
-  </form>
-
-  <footer>© جميع الحقوق محفوظة — استمارة مهنيي الطاكسيات</footer>
-</div>
-<div id="successModal" class="success-modal">
-  <div class="success-content">
-    <div class="success-icon">✅</div>
-    <h2 class="success-title">تم الإرسال بنجاح!</h2>
-    <p class="success-message">شكراً جزيلاً لك على وقتك ومشاركتك القيمة. لقد تم استلام استمارتك بنجاح وسيتم استخدام هذه البيانات لتحسين وضعية مهنيي قطاع التاكسي.</p>
-    <button class="success-button" onClick="closeSuccessModal()">موافق</button>
-  </div>
-</div>
-<script>
-let currentSection = 0;
-const totalSections = 6;
-
-function showSection(i){
-  for(let s=0;s<totalSections;s++){
-    const sec = document.getElementById('section'+s);
-    if(sec) sec.style.display = (s===i)?'block':'none';
-  }
-  
-  // Afficher l'image seulement dans la première section
-  const headerImage = document.getElementById('headerImage');
-  if (headerImage) {
-    headerImage.style.display = (i === 0) ? 'block' : 'none';
-  }
-  
-  const headerTXT = document.getElementById('headerTXT');
-  if (headerTXT) {
-    headerTXT.style.display = (i === 0) ? 'block' : 'none';
-  }
-  
-  
-  
-  
-  document.getElementById('prevBtn').style.display = (i===0)?'none':'inline-block';
-  document.getElementById('nextBtn').style.display = (i===totalSections-1)?'none':'inline-block';
-  document.getElementById('submitBtn').style.display = (i===totalSections-1)?'inline-block':'none';
-  updateProgressBar();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function nextSection(){
-  if(!validateSection(currentSection)) return;
-  currentSection = Math.min(currentSection+1, totalSections-1);
-  showSection(currentSection);
-}
-
-function prevSection(){
-  currentSection = Math.max(currentSection-1,0);
-  showSection(currentSection);
-}
-
-function validateSection(idx){
-  const section = document.getElementById('section'+idx);
-  const requiredControls = section.querySelectorAll('[required]');
-  let ok = true;
-  requiredControls.forEach(ctrl=>{
-   if(ctrl.type === 'radio'){
-      const group = section.querySelectorAll('input[name="'+ctrl.name+'"]');
-      const anyChecked = Array.from(group).some(r=>r.checked);
-      if(!anyChecked){ ok=false; group.forEach(g=>g.classList.add('error')); }
-      else group.forEach(g=>g.classList.remove('error'));
-    } else {
-      if(!ctrl.value || ctrl.value.trim()===""){ ctrl.classList.add('error'); ok=false; }
-      else ctrl.classList.remove('error');
+        function showSection(sectionIndex) {
+    // Vérifier les champs requis dans la section actuelle avant d'avancer
+    if (sectionIndex > currentSection) {
+        const current = document.getElementById('section' + currentSection);
+        if (!validateSection(current)) {
+            return; // stop navigation si la validation échoue
+        }
     }
-  });
-  if(!ok){ alert('رجاءً عَمّر الحقول الإلزامية (*) فهاذ القسم.'); }
-  return ok;
+
+    // Afficher la nouvelle section
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById('section' + sectionIndex);
+    if (target) {
+        target.classList.add('active');
+        currentSection = sectionIndex;
+        document.getElementById('current-section').textContent = currentSection + 1;
+        updateProgressBar();
+        window.scrollTo(0,0);
+    }
 }
 
-function updateProgressBar(){
-  const percent = (currentSection/(totalSections-1))*100;
-  document.getElementById('progressBar').style.width = percent + '%';
+// Validation d'une section donnée
+function validateSection(section) {
+    const requiredFields = section.querySelectorAll('[required]');
+    for (const field of requiredFields) {
+        if (field.type === 'radio') {
+            const name = field.name;
+            const checked = section.querySelector('input[name="'+name+'"]:checked');
+            if (!checked) {
+                alert("من فضلك جاوب على السؤال المطلوب قبل الانتقال.");
+                field.focus();
+                return false;
+            }
+        } else if (field.type === 'checkbox') {
+            // s'il y a des checkbox obligatoires, au moins une doit être cochée
+            const name = field.name;
+            const anyChecked = section.querySelectorAll('input[name="'+name+'"]:checked').length > 0;
+            if (!anyChecked) {
+                alert("من فضلك اختر على الأقل خيار واحد قبل الانتقال.");
+                field.focus();
+                return false;
+            }
+        } else {
+            if (!field.value) {
+                alert("من فضلك اعبي الحقل المطلوب قبل الانتقال.");
+                field.focus();
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
-function checkConsent(){
-  return true;
-}
+        function updateProgressBar() {
+            const progressPercentage = (currentSection / (totalSections - 1)) * 100;
+            document.getElementById('progress').style.width = progressPercentage + '%';
+        }
 
-function toggle(id, show){ const el=document.getElementById(id); if(!el) return; el.style.display = show ? 'block' : 'none'; }
+        document.addEventListener('DOMContentLoaded', function() {
+            // init indicator
+            document.getElementById('total-sections').textContent = totalSections;
+            document.getElementById('current-section').textContent = currentSection + 1;
+            updateProgressBar();
 
-document.querySelectorAll('input[name="detenteur_agrement"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('bloc_contrat', e.target.value === 'لا'));
-});
+            // Elements
+            const form = document.getElementById('usertaxiform');
+            const submitBtn = document.getElementById('submitBtn');
 
-document.querySelectorAll('input[name="pointage_controle"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('bloc_controle', e.target.value === 'نعم'));
-});
+            // Conditional displays
+            const hasVehicleYes = document.getElementById('has_vehicle_yes');
+            const vehicleType = document.getElementById('vehicle_type');
 
-document.querySelectorAll('input[name="contrat_licence"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('bloc_type_contrat', e.target.value === 'نعم'));
-});
+            const combinedYes = document.getElementById('combined_yes');
+            const transportTypes = document.getElementById('transport_types');
 
-document.querySelectorAll('input[name="autre_activite"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('preciser_activite_label', e.target.value === 'نعم'));
-});
+            const improveYes = document.getElementById('improve_yes');
+            const improvementSuggestions = document.getElementById('improvement_suggestions');
 
-document.querySelectorAll('input[name="regles_priorite"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('respect_regles_label', e.target.value === 'نعم'));
-});
+            const vtcYes = document.getElementById('vtc_yes');
+            const vtcSection = document.getElementById('vtc_section');
 
-document.querySelectorAll('input[name="pointage_controle"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('bloc_controle', e.target.value === 'نعم'));
-});
+            // Show/hide vehicle type
+            document.querySelectorAll('input[name="possede_vehicule"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'oui') {
+                        vehicleType.style.display = 'block';
+                    } else {
+                        vehicleType.style.display = 'none';
+                        document.querySelectorAll('input[name="type_vehicule"]').forEach(i => i.checked = false);
+                    }
+                });
+            });
 
-document.querySelectorAll('input[name="pointage_systeme"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('bloc_pointage', e.target.value === 'نعم'));
-});
+            // Show/hide transport types
+            document.querySelectorAll('input[name="transport_combiné"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'oui') {
+                        transportTypes.style.display = 'block';
+                    } else {
+                        transportTypes.style.display = 'none';
+                        document.querySelectorAll('#transport_types input[type="checkbox"]').forEach(cb => cb.checked = false);
+                        document.querySelectorAll('#transport_types input[type="text"]').forEach(t => t.value = '');
+                    }
+                });
+            });
 
-document.querySelectorAll('input[name="staionfreqente"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('blocstrfreq', e.target.value === 'نعم'));
-});
-document.querySelectorAll('input[name="zones_preferees"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('bloc_zonepref', e.target.value === 'نعم'));
-});
+            // Show/hide improvement suggestions
+            document.querySelectorAll('input[name="amelioration_service"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'oui') {
+                        improvementSuggestions.style.display = 'block';
+                    } else {
+                        improvementSuggestions.style.display = 'none';
+                        const field = form.querySelector('input[name="suggestions_amelioration"]');
+                        if (field) field.value = '';
+                    }
+                });
+            });
 
+            // Show/hide VTC section
+            document.querySelectorAll('input[name="utilisation_vtc"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'oui') {
+                        vtcSection.style.display = 'block';
+                    } else {
+                        vtcSection.style.display = 'none';
+                        // clear fields inside VTC
+                        vtcSection.querySelectorAll('input').forEach(f => {
+                            if (f.type === 'radio' || f.type === 'checkbox') f.checked = false;
+                            else f.value = '';
+                        });
+                    }
+                });
+            });
 
+            // Submit handler with validation
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
 
-document.querySelectorAll('input[name="recette_fixe"]').forEach(r=>{
-  r.addEventListener('change', e => toggle('recette_var', e.target.value === 'نعم'));
-});
+                submitBtn.disabled = true;
+                submitBtn.textContent = "جارٍ الإرسال...";
 
+                // 1) browser validity for basic required attributes
+                // Because we used novalidate on form, call checkValidity manually
+                // (we used novalidate to manage conditional validation smoothly)
+                // Validate visible required fields:
+                if (!validateVisibleRequired(form)) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "صيفط الاستمارة";
+                    return;
+                }
 
-function updateCollectif(){
-  const checked = Array.from(document.querySelectorAll('input[name="service_mode"]')).some(c=>c.checked && c.value.includes('جماعي'));
-  toggle('bloc_collectif', checked);
-}
-document.querySelectorAll('input[name="service_mode"]').forEach(c=>c.addEventListener('change', updateCollectif));
+                // 2) custom validations:
+                // - transport_utilise: at least one checkbox
+                if (!isAnyChecked('transport_utilise')) {
+                    alert('من فضلك اختر على الأقل وسيلة نقل واحدة (السؤال 9).');
+                    // focus first checkbox
+                    const el = form.querySelector('input[name="transport_utilise"]');
+                    if (el) el.focus();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "صيفط الاستمارة";
+                    return;
+                }
 
-document.querySelectorAll('input[name="type_service"]').forEach(r=>{
-  r.addEventListener('change', e=>{
-    toggle('bloc_ligne', e.target.value === 'الخط');
-    toggle('bloc_demande', e.target.value === 'على حسب الطلب');
-  });
-});
+                // - if possede_vehicule == oui then one of type_vehicule required
+                const possede = form.querySelector('input[name="possede_vehicule"]:checked');
+                if (possede && possede.value === 'oui') {
+                    if (!isAnyChecked('type_vehicule')) {
+                        alert('من فضلك اختر نوع المركبة (طوموبيل أو موطور)(السؤال 8).');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "صيفط الاستمارة";
+                        return;
+                    }
+                }
 
-document.querySelectorAll('input[name="prise_charge_assurance"]').forEach(r=>r.addEventListener('change', e=>toggle('part_assurance_label', e.target.value==='مشاركة')));
-document.querySelectorAll('input[name="prise_charge_entretien"]').forEach(r=>r.addEventListener('change', e=>toggle('part_entretien_label', e.target.value==='مشاركة')));
-document.querySelectorAll('input[name="prise_charge_reparations"]').forEach(r=>r.addEventListener('change', e=>toggle('part_reparations_label', e.target.value==='مشاركة')));
+                // - if transport_combiné == oui then at least one type_transport_combiné
+                const comb = form.querySelector('input[name="transport_combiné"]:checked');
+                if (comb && comb.value === 'oui') {
+                    const any = Array.from(document.querySelectorAll('#transport_types input[type="checkbox"]')).some(cb => cb.checked);
+                    if (!any) {
+                        alert('من فضلك اختر على الأقل نوع واحد من أنواع النقل المدمجة(السؤال 20).');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "صيفط الاستمارة";
+                        return;
+                    }
+                }
 
-document.querySelectorAll('input[name="conflits_station"]').forEach(r=>r.addEventListener('change', e=>toggle('nature_conflits_label', e.target.value==='نعم')));
+                // - if depense_hebdo == plus_100 then value required and >=101
+                const depHebdo = form.querySelector('input[name="depense_hebdo"]:checked');
+                if (depHebdo && depHebdo.value === 'plus_100') {
+                    const val = form.querySelector('input[name="depense_hebdo_plus_100"]').value;
+                    if (!val || Number(val) < 101) {
+                        alert('من فضلك حدد مبلغ المصروف الأسبوعي (أكبر من أو يساوي 101) في السؤال 19.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "صيفط الاستمارة";
+                        return;
+                    }
+                }
 
-document.querySelectorAll('input[name="modalite_retribution"]').forEach(r=>r.addEventListener('change', e=>toggle('autre_retribution_label', e.target.value==='أخرى')));
+                // - if utilisation_vtc == oui, validate VTC subfields (frequence_vtc, depense_vtc, qualite_vtc)
+                const vtc = form.querySelector('input[name="utilisation_vtc"]:checked');
+                if (vtc && vtc.value === 'oui') {
+                    if (!form.querySelector('input[name="frequence_vtc"]:checked')) {
+                        alert('من فضلك اختار تكرار استعمال VTC في السؤال 32.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "صيفط الاستمارة";
+                        return;
+                    }
+                    if (!form.querySelector('input[name="depense_vtc"]:checked')) {
+                        alert('من فضلك اختار فئة المصروف الأسبوعي على VTC في السؤال 33.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "صيفط الاستمارة";
+                        return;
+                    }
+                    // if depense_vtc == plus_100 then check number
+                    const dv = form.querySelector('input[name="depense_vtc"]:checked');
+                    if (dv && dv.value === 'plus_100') {
+                        const v = form.querySelector('input[name="depense_vtc_plus_100"]').value;
+                        if (!v || Number(v) < 101) {
+                            alert('من فضلك حدد مبلغ المصروف الأسبوعي على VTC (≥101)(السؤال 33).');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = "صيفط الاستمارة";
+                            return;
+                        }
+                    }
+                    if (!form.querySelector('input[name="qualite_vtc"]:checked')) {
+                        alert('من فضلك اختار تقييم جودة VTC في السؤال 34.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "صيفط الاستمارة";
+                        return;
+                    }
+                }
 
-document.querySelectorAll('input[name="autre_revenu"]').forEach(r=>r.addEventListener('change', e=>toggle('preciser_revenu_label', e.target.value==='نعم')));
+                // - if amelioration_service == oui then suggestions_amelioration must not be empty
+                
+                // All validations passed -> prepare formData & send
+                const formData = new FormData(form);
 
-showSection(0);
-updateCollectif();
+                fetch("https://script.google.com/macros/s/AKfycbzAAjyl0M_iUD_3bByndRRa9FwLegFsrNWtSR6UljQzaB1LMM6aFWO_xcM7ErLgeAHQsw/exec", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.result === "success") {
+                        alert("✅ تم إرسال الاستمارة بنجاح!");
+                        form.reset();
+                        // reset UI
+                        document.querySelectorAll('#transport_types input, #vehicle_type input').forEach(i => i.checked = false);
+                        document.getElementById('vehicle_type').style.display = 'none';
+                        document.getElementById('transport_types').style.display = 'none';
+                        document.getElementById('improvement_suggestions').style.display = 'none';
+                        document.getElementById('vtc_section').style.display = 'none';
+                        // go to first page
+                        showSection(0);
+                        // redirection facultative (comme voulu précédemment)
+                        // window.location.href = "https://rachidprf.github.io/TaxiUser/";
+                    } else {
+                        alert("⚠️ خطأ: " + (data && data.error ? data.error : "خطأ غير معروف"));
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("❌ خطأ في الاتصال بالشبكة");
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "صيفط الاستمارة";
+                });
+            });
 
-document.getElementById('taxiForm').addEventListener('submit', function(e){
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'جارٍ الإرسال...';
-  setTimeout(()=>{ btn.disabled=false; btn.textContent='صيفط الاستمارة'; }, 55000);
-  
-});
-  const form = document.getElementById('taxiForm');
-  const responseMessage = document.getElementById('responseMessage');
+            // helper functions
+            function isAnyChecked(name) {
+                return !!form.querySelector('input[name="'+name+'"]:checked');
+            }
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+            function validateVisibleRequired(formElement) {
+                // Iterate required inputs, but only check those inside visible .section.active OR those not in a .section
+                const requiredFields = Array.from(formElement.querySelectorAll('[required]'));
+                for (const field of requiredFields) {
+                    // find closest section container
+                    const section = field.closest('.section');
+                    if (section) {
+                        if (section.classList.contains('active')) {
+                            // For radio groups, check if any in the group is checked
+                            if (field.type === 'radio') {
+                                const name = field.name;
+                                const checked = formElement.querySelector('input[name="'+name+'"]:checked');
+                                if (!checked) {
+                                    // focus first radio of that group
+                                    field.focus();
+                                    alert('من فضلك اعبي الحقل المطلوب.');
+                                    return false;
+                                }
+                            } else {
+                                if (!field.value) {
+                                    field.focus();
+                                    alert('من فضلك اعبي الحقل المطلوب.');
+                                    return false;
+                                }
+                            }
+                        } else {
+                            // field is inside hidden section -> skip (we validate conditionally later)
+                            continue;
+                        }
+                    } else {
+                        // required field outside sections -> check normally
+                        if (!field.value) {
+                            field.focus();
+                            alert('من فضلك اعبي الحقل المطلوب.');
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
 
-    const formData = new FormData(form);
-
-    fetch("https://script.google.com/macros/s/AKfycby7pzix1D-uwMdtUuT5WeK5F02hsB22S7d3yQ9bBdf4Q0JZ9VYapYbH4dC4CQxkzAbJ/exec", {
-      method: "POST",
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === "success") {
-        alert(data.message);   // ✅ affiche l’alerte
-        form.reset();          // ✅ vide le formulaire
-		window.location.href = "https://rachidprf.github.io/TaxiTangerPro/"
-      } else {
-        alert("Erreur : " + data.error);
-      }
-    })
-    .catch(error => {
-      alert("Erreur réseau ❌");
-      console.error(error);
-    });
-  });
-</script>
-
+            // ensure initial UI state matches possible prefilled values
+            // (in case user navigates back/forward)
+            // Trigger change on any checked radios that control UI
+            const trigger = (sel) => {
+                const el = form.querySelector(sel);
+                if (el) el.dispatchEvent(new Event('change'));
+            };
+            trigger('input[name="possede_vehicule"]:checked');
+            trigger('input[name="transport_combiné"]:checked');
+            trigger('input[name="amelioration_service"]:checked');
+            trigger('input[name="utilisation_vtc"]:checked');
+        });
+    </script>
 </body>
 </html>
